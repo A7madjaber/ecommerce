@@ -17,6 +17,9 @@ class CreateOrderDetialsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('order_id');
             $table->string('product_id')->nullable();
+            $table->string('product_name')->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
             $table->string('quantity')->nullable();
             $table->string('singleprice')->nullable();
             $table->string('totalprice')->nullable();

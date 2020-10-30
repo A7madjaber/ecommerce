@@ -9,18 +9,14 @@
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('front/images/phone.png')}}" alt=""></div>+38 068 005 3570</div>
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('front/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
-                        <div class="top_bar_menu">
-                            <ul class="standard_dropdown top_bar_dropdown">
-                                <li>
-                                    <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">Italian</a></li>
-                                        <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">Japanese</a></li>
-                                    </ul>
-                                </li>
 
-                            </ul>
+                        <div class="top_bar_menu">
+                            <a href="#">
+                                <div class="top_bar_contact_item">
+                                    <i class="fa fa-truck"></i>
+                                    Track My Orders</div>
+                            </a>
+
                         </div>
                         <div class="top_bar_user">
 

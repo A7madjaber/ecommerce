@@ -60,13 +60,14 @@ Route::get('/cc', function () {
 
 });
 
-Route::get('/c', function () {
+Route::get('/cd', function () {
 
-    return \App\Order::all() ;
+    return \App\Model\Admin\Product::with('orderDetails')->get() ;
 
 });
 
 
 
+Route::get('track/orders', 'OrderController@track')->name('track.orders');
 
 Route::post('/store/news', 'Front\FrontController@storenews')->name('store.newsLetter');

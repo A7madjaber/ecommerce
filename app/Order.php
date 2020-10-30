@@ -8,6 +8,7 @@ class Order extends Model
 {
     protected $fillable=[
         'user_id',
+        'payment_type',
         'payment_id',
         'paying_amount',
         'blnc_transection',
@@ -20,7 +21,9 @@ class Order extends Model
         'date',
         'month',
         'year',
+        'status_code',
     ];
+
 
     public function user(){
 
@@ -29,6 +32,12 @@ class Order extends Model
 
     public function orderDetails(){
 
-        return $this->hasOne(OrderDetials::class);
+
+        return $this->hasOne(OrderDetials::class,'order_id','id');
+    }
+
+    public function ship(){
+
+        return $this->hasOne(Shipping::class,'order_id','id');
     }
 }

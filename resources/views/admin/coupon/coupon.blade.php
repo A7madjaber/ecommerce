@@ -31,14 +31,14 @@
                         </thead>
                         <tbody>
                         @foreach($coupon as $key=>$row)
-                            <tr>
+                            <tr id="rwo{{$row->id}}">
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $row->coupon}}</td>
                                 <td>{{ $row->discount}}%</td>
 
                                 <td>
-                                    <a href="{{route('admin.coupon.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i> Edit</a>
-                                    <a href="" id="delete" route="{{route('admin.coupon.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"> Delete</i> </a>
+                                    <a href="{{route('admin.coupon.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                    <a href="" id="delete" route="{{route('admin.coupon.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
                                 </td>
 
                             </tr>

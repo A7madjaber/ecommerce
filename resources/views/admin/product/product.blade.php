@@ -1,5 +1,6 @@
 @extends('admin.layouts.app',['title'=>'Products'])
 @section('content')
+
     <div class="sl-mainpanel">
         <div class="sl-pagebody">
             <div class="sl-page-title">
@@ -29,7 +30,7 @@
                         </thead>
                         <tbody>
                         @foreach($product as $row)
-                            <tr>
+                            <tr id="rwo{{$row->id}}">
                                 <td>{{ $row->product_code }}</td>
                                 <td>{{ $row->name }}</td>
                                 <td>
@@ -64,7 +65,7 @@
                                     @else
 
                                         <a href="" id="status"title="active" route="{{route('admin.product.status')}}"
-                                           model_id="{{$row->id}}"class="btn btn-sm btn-info"><i class="fa fa-thumbs-up" ></i></a>
+                                           model_id="{{$row->id}}"class="btn btn-sm btn-info"><i class="fa fa-thumbs-up"></i></a>
                                     @endif
                                 </td>
 
@@ -83,3 +84,37 @@
  </div>
 
 @endsection
+
+
+@push('admin-js')
+    <script>
+
+        $(document).on("click", "#status", function(e){
+            e.preventDefault();
+            var model_id =  $(this).attr('model_id');
+            var route =  $(this).attr('route');
+            $.ajax({
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    'id' :model_id,
+                },
+                url: route,
+                type: "post",
+                dataType: "JSON",
+                success : function(data)
+                {
+                    swal({
+                        text: data.message,
+                        icon: "success",
+                        buttons: true,
+                    });
+
+                    $('#datatable1').load(document.URL +  ' #datatable1');
+                },
+            })
+
+        });
+    </script>
+
+
+@endpush

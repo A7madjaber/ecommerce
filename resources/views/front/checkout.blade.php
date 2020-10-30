@@ -118,9 +118,6 @@
 
 
 
-
-
-
                                         <span style="float: right;">
                                             {{ Session::get('coupon')['discount']}} </span> </li>
 

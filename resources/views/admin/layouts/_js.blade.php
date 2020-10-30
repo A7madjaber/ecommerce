@@ -121,6 +121,7 @@
     @endif
 </script>
 
+
 <script>
 
     $(document).on("click", "#delete", function(e){
@@ -158,9 +159,9 @@
                                 buttons: true,
                             });
 
-                            setTimeout(function(){// wait for 5 secs(2)
-                                location.reload(); // then reload the page.(3)
-                            }, 1200);
+
+
+                            $('#datatable1').load(document.URL +  ' #datatable1');
                         },
                     })
 
@@ -178,32 +179,4 @@
 
 
 
-<script>
-
-    $(document).on("click", "#status", function(e){
-        e.preventDefault();
-        var model_id =  $(this).attr('model_id');
-        var route =  $(this).attr('route');
-        $.ajax({
-            data: {
-                "_token": "{{ csrf_token() }}",
-                'id' :model_id,
-            },
-            url: route,
-            type: "post",
-            dataType: "JSON",
-            success : function(data)
-            {
-                swal({
-                    text: data.message,
-                    icon: "success",
-                    buttons: true,
-                });
-
-                $('#datatable1').load(document.URL +  ' #datatable1');
-            },
-        })
-
-    });
-</script>
-
+@stack('admin-js')

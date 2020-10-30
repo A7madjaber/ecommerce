@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\OrderDetials;
+use App\Shipping;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Stripe\Charge;
 
 class PaymentController extends Controller
@@ -50,10 +55,15 @@ class PaymentController extends Controller
 
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
-        $token = $_POST['stripeToken'];
 
+        $user=Auth::user();
+        $total=$request->total;
+        $subtotal=Session::has('coupon') ? Session::get('coupon')['balance'] : Cart::Subtotal();
+
+
+        $token = $_POST['stripeToken'];
         $charge = Charge::create([
-            'amount' => 999*100,
+            'amount' => $total*100,
             'currency' => 'usd',
             'description' => 'Ahmed Shop Details',
             'source' => $token,
@@ -61,6 +71,58 @@ class PaymentController extends Controller
         ]);
 
 
-        return $charge;
+       $order= Order::create([
+            'user_id'=>$user->id,
+            'payment_id'=>$charge->payment_method,
+            'payment_type'=>$request->payment_type,
+            'paying_amount'=>$charge->amount,
+            'blnc_transection'=>$charge->balance_transaction,
+            'stripe_order_id'=>$charge->metadata->order_id,
+            'subtotal'=>$subtotal,
+            'shipping'=>$request->shipping,
+            'vat'=>$request->vat,
+            'status'=>0,
+            'total'=>$total,
+            'date'=>date('F'),
+            'month'=>date('d-m-y'),
+            'year'=>date('Y'),
+            'status_code'=>uniqid(),
+                   ]);
+
+
+       Shipping::create([
+           'order_id'=> $order->id,
+           'ship_name'=> $request->ship_name,
+           'ship_phone'=> $request->ship_phone,
+           'ship_email'=> $request->ship_email,
+           'ship_address'=> $request->ship_address,
+           'ship_city'=> $request->ship_city,
+
+       ]);
+
+
+        foreach (Cart::content() as $row){
+
+            OrderDetials::create([
+                'order_id'=>$order->id,
+                'product_id'=>$row->id,
+                'quantity'=>$row->qty,
+                'product_name'=>$row->name,
+                'size'=>$row->options->size,
+                'color'=>$row->options->color,
+                'singleprice'=>$row->price,
+                'totalprice'=>$row->price * $row->qty,
+            ]);
+
+        }
+
+   Cart::destroy();
+      Session::has('coupon') ? Session::forget('coupon') : '';
+
+      return redirect()->route('home')->with(['message'=>'Order Process Successfully Done','alert-type'=>'success']);
+
+
     }
+
+
 }

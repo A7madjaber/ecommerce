@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f2695c9-f4f6-43bd-bda0-ce5b6b649999" name="Default Changelist" comment="" />
+    <list default="true" id="4f2695c9-f4f6-43bd-bda0-ce5b6b649999" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Shipping.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_29_111112_create_shippings_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/order/all.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/OrderDetials.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OrderDetials.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_29_104406_create_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_29_104406_create_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_29_105149_create_order_detials_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_29_105149_create_order_detials_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/coupon/coupon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/coupon/coupon.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/_js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/_js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/_sid.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/_sid.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/product/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/product/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layouts/_header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/payment/stripe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/payment/stripe.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/Admin/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Admin/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +50,16 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\laragon2\www\ecommerce\.idea" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -148,26 +181,28 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1imWb4CgOdPgXKrAc3dzVhHZsDm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/front" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/order" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon2\www\ecommerce\resources\views\admin\order" />
+      <recent name="C:\laragon2\www\ecommerce\resources\views\front" />
+      <recent name="C:\laragon2\www\ecommerce\public\front\images" />
+      <recent name="C:\laragon2\www\ecommerce\resources\views\front\layouts" />
+      <recent name="C:\Users\HHh5Ooo\Desktop" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon2\www\ecommerce\resources\views\front" />
       <recent name="C:\laragon2\www\ecommerce\app\Http\Controllers\Admin\Blog" />
       <recent name="C:\laragon2\www\ecommerce\app\Model\Blog" />
       <recent name="C:\laragon2\www\ecommerce\public\public\media" />
       <recent name="C:\laragon2\www\ecommerce\app\Http\Controllers\Admin" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon2\www\ecommerce\resources\views\front" />
-      <recent name="C:\laragon2\www\ecommerce\public\front\images" />
-      <recent name="C:\laragon2\www\ecommerce\resources\views\front\layouts" />
-      <recent name="C:\Users\HHh5Ooo\Desktop" />
-      <recent name="C:\laragon2\www\ecommerce\resources\views\auth" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -218,12 +253,27 @@
       <workItem from="1603739213084" duration="1751000" />
       <workItem from="1603793142485" duration="24144000" />
       <workItem from="1603885919334" duration="10122000" />
-      <workItem from="1603965519197" duration="2937000" />
+      <workItem from="1603965519197" duration="11778000" />
+      <workItem from="1603989571054" duration="11785000" />
+      <workItem from="1604063281335" duration="11262000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

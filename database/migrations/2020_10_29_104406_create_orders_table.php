@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id')->nullable();
+            $table->string('payment_type')->nullable();
             $table->string('payment_id')->nullable();
             $table->string('paying_amount')->nullable();
             $table->string('blnc_transection')->nullable();
@@ -24,11 +25,17 @@ class CreateOrdersTable extends Migration
             $table->string('shipping')->nullable();
             $table->string('vat')->nullable();
             $table->string('total')->nullable();
-            $table->string('status')->nullable()->default(0);
+            $table->string('status_code')->nullable();
+            $table->string('status')->nullable()->default(0); /* =>Pending , 1=>Payment Accept , 2=>Progress,3=>Delivered, else => canceld*/
             $table->string('month')->nullable();
             $table->string('date')->nullable();
             $table->string('year')->nullable();
             $table->timestamps();
+
+
+
+
+
         });
     }
 

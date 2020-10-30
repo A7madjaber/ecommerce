@@ -66,7 +66,7 @@
                             <div id="card-errors" role="alert"></div>
                         </div><br>
 
-                        <input type="hidden" name="shipping" value="{{ Settings()->charge }} ">
+                        <input type="hidden" name="shipping" value="{{ Settings()->shipping_charge }} ">
                         <input type="hidden" name="vat" value="{{ Settings()->vat  }} ">
                         <input type="hidden" name="total" value="{{ Cart::Subtotal() +Settings()->charge +Settings()->vat }} ">
                         <input type="hidden" name="ship_name" value="{{$data['name']}}">
@@ -81,8 +81,9 @@
             </div>
         </div>
     </div>
-</div>
+    <br><br>
 
+</div>
 
 
 @push('front-js')

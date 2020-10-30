@@ -79,7 +79,6 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
         Route::post('store', 'ProductController@store')->name('store');
         Route::post('status/status', 'ProductController@status')->name('status');
         Route::get('product/{id}', 'ProductController@show')->name('show');
-
         Route::get('{id}', 'ProductController@edit')->name('edit');
         Route::post('{id}', 'ProductController@update')->name('update');
         Route::post('delete/id', 'ProductController@destroy')->name('delete');
@@ -118,5 +117,32 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
     });
 
 
- });
+    /////////////////////////////////////
+    /// Orders
+
+    Route::group(['as'=>'order.','prefix'=>'order'],function (){
+
+        Route::get('all', 'OrderController@all')->name('all');
+        Route::get('/{id}', 'OrderController@view')->name('view');
+        Route::post('accept/{id}', 'OrderController@accept')->name('accept');
+        Route::post('cancel/{id}', 'OrderController@cancel')->name('cancel');
+        Route::post('process-delivery/{id}', 'OrderController@processDelivery')->name('process-delivery');
+        Route::post('delivery-done/{id}', 'OrderController@deliveryDone')->name('delivery-done');
+
+
+//          Route::get('create', 'ProductController@create')->name('create');
+//        Route::get('get/sub-categories/{category_id}', 'ProductController@getsubcategories')->name('get-subcategories');
+//        Route::post('store', 'ProductController@store')->name('store');
+//        Route::post('status/status', 'ProductController@status')->name('status');
+//
+//        Route::get('{id}', 'ProductController@edit')->name('edit');
+//        Route::post('{id}', 'ProductController@update')->name('update');
+//        Route::post('delete/id', 'ProductController@destroy')->name('delete');
+
+
+    });
+
+
+
+});
 
