@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderDetials;
 use App\Shipping;
@@ -83,10 +84,12 @@ class PaymentController extends Controller
             'vat'=>$request->vat,
             'status'=>0,
             'total'=>$total,
-            'date'=>date('F'),
-            'month'=>date('d-m-y'),
+            'date'=>date('d-m-y'),
+            'month'=>date('F'),
             'year'=>date('Y'),
-            'status_code'=>uniqid(),
+            'status_code'=>mt_rand(100000,999999),
+
+
                    ]);
 
 

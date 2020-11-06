@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\model\Admin\Coupon;
 use App\Model\Admin\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -43,7 +44,7 @@ class CartController extends Controller
 
     public function remove(Request $request){
 
-        $remove=Cart::remove($request->id);
+        Cart::remove($request->id);
 
 
         return response()->json(['message' => 'Product Deleted From cart','icon'=>'success']);

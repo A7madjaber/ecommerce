@@ -1,73 +1,69 @@
 <?php
 
-
+///////////home site
 Route::get('/', function () {
-
     return view('front.home');
+})->name('home');
 
-    })->name('home');
-
-Route::get('/profile','HomeController@index')->name('profile');
 
 //auth & user
 Auth::routes(['verify'=>true]);
 Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
 Route::post('/password-update', 'HomeController@updatePassword')->name('password.update');
 Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
+Route::get('/profile','HomeController@index')->name('profile');
+
+//Blog
 /////////////////////////////////////////////////////
-///
+
+Route::get('blog', 'Front\FrontController@posts')->name('blog.posts');
+Route::get('blog/post/{id}', 'Front\FrontController@post')->name('post');
+
+//////////////////////////////////Wishlist
+
+Route::get('add/Wishlist', 'Front\WhishlistController@add')->name('add.wihshList');
+Route::get('user/whishlist', 'Front\WhishlistController@all')->name('user.whishlist')->middleware('auth');
+Route::get('remove/Wishlist/{id}', 'Front\WhishlistController@remove')->name('remove.wihshList')->middleware('auth');
 
 
-Route::get('add/Wishlist', 'WhishlistController@add')->name('add.wihshList');
-Route::get('user/whishlist', 'WhishlistController@all')->name('user.whishlist')->middleware('auth');
-//Route::get('remove/Wishlist', 'WhishlistController@remove')->name('remove.wihshList');
+///////////////////////CArt///////////////////////////////
 
+Route::post('add/cart', 'Front\CartController@add')->name('add.cart');
+Route::get('cart/show', 'Front\CartController@show')->name('show.cart');
+Route::get('cart/remove', 'Front\CartController@remove')->name('remove.form.cart');
+Route::get('cart/destroy', 'Front\CartController@destroy')->name('destroy.cart');
+Route::get('cart/qty/update', 'Front\CartController@qtyupdate')->name('qty.update');
 
-/////////////////////////////////////////////////////////////
-
-Route::post('add/cart', 'CartController@add')->name('add.cart');
-Route::get('cart/show', 'CartController@show')->name('show.cart');
-Route::get('cart/remove', 'CartController@remove')->name('remove.form.cart');
-Route::get('cart/destroy', 'CartController@destroy')->name('destroy.cart');
-Route::get('cart/qty/update', 'CartController@qtyupdate')->name('qty.update');
-
-
-
-///////////////////////////////////////////
-Route::get('product/details/{id}', 'ProductController@product')->name('product');
-Route::post('product/cart/add', 'ProductController@addCart')->name('product.add.cart');
-Route::get('cart/product/view/{id}', 'ProductController@view')->name('product.view.cart');
-
-Route::get('checkout', 'CartController@checkout')->name('user.checkout')->middleware('auth');
-Route::get('coupon', 'CartController@coupon')->name('coupon')->middleware('auth');
-Route::get('coupon/remove', 'CartController@couponremove')->name('coupon.remove')->middleware('auth');
-
-//////////////*////////////////////////////////////
-
-
-Route::get('payment/index', 'PaymentController@payment')->name('payment.step');
-Route::post('payment/process', 'PaymentController@PaymentProcess')->name('payment.process');
-Route::post('payment/stripe', 'PaymentController@stripe')->name('stripe.charge');
+///////////////////////checkout && Coupon//////////////////////////////////////////////////////////////////////////////
+Route::get('checkout', 'Front\CartController@checkout')->name('user.checkout')->middleware('auth');
+Route::get('coupon', 'Front\CartController@coupon')->name('coupon')->middleware('auth');
+Route::get('coupon/remove', 'Front\CartController@couponremove')->name('coupon.remove')->middleware('auth');
 
 
 
+///////////////////////////Product Details
+Route::get('product/details/{id}', 'Front\ProductController@product')->name('product');
+Route::post('product/cart/add', 'Front\ProductController@addCart')->name('product.add.cart');
+Route::get('cart/product/view/{id}', 'Front\ProductController@view')->name('product.view.cart');
+///////shop/////////
+Route::get('product/subcategory/{id}', 'Front\ProductController@subcategory')->name('product.subcategory');
+Route::get('product/category/{id}', 'Front\ProductController@category')->name('product.category');
+Route::get('product/brand/{id}', 'Front\ProductController@brand')->name('product.brand');
 
 
 
-Route::get('/cc', function () {
 
-    return Gloudemans\Shoppingcart\Facades\Cart::content();
-
-});
-
-Route::get('/cd', function () {
-
-    return \App\Model\Admin\Product::with('orderDetails')->get() ;
-
-});
+ //////////////////////payment//////////////////
+Route::get('payment/index', 'Front\PaymentController@payment')->name('payment.step');
+Route::post('payment/process', 'Front\PaymentController@PaymentProcess')->name('payment.process');
+Route::post('payment/stripe', 'Front\PaymentController@stripe')->name('stripe.charge');
 
 
 
-Route::get('track/orders', 'OrderController@track')->name('track.orders');
 
-Route::post('/store/news', 'Front\FrontController@storenews')->name('store.newsLetter');
+Route::post('subscribe/news', 'Front\FrontController@subscribenewsLetter')->name('subscribe.newsLetter');
+
+Route::post('track/order', 'Front\FrontController@track')->name('order.tracking');
+
+
+

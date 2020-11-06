@@ -3,7 +3,10 @@
 @section('content')
 
  <div class="sl-mainpanel">
-
+     <nav class="breadcrumb sl-breadcrumb">
+         <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+         <span class="breadcrumb-item active">Categories</span>
+     </nav>
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
@@ -13,8 +16,8 @@
 
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Category List
-        <a href="#" class="btn btn-sm btn-secondary" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
-            <i class="fa fa-plus"></i> Add New </a>
+        <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+            <i class="fa fa-plus"></i></a>
           </h6>
 
 

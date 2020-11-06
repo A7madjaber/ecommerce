@@ -3,6 +3,10 @@
 
 
     <div class="sl-mainpanel">
+        <nav class="breadcrumb sl-breadcrumb">
+            <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+            <span class="breadcrumb-item active">Orders</span>
+        </nav>
         <div class="sl-pagebody">
             <div class="sl-page-title">
                 <h5>Orders Table</h5>

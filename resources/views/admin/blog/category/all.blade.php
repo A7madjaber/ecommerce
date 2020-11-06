@@ -4,6 +4,10 @@
 
     <div class="sl-mainpanel">
 
+        <nav class="breadcrumb sl-breadcrumb">
+            <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+            <span class="breadcrumb-item active">Blog Categories</span>
+        </nav>
 
         <div class="sl-pagebody">
             <div class="sl-page-title">
@@ -13,8 +17,8 @@
 
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">Category List
-                    <a href="#" class="btn btn-sm btn-secondary" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
-                        <i class="fa fa-plus"></i> Add New </a>
+                    <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+                        <i class="fa fa-plus"></i> </a>
                 </h6>
 
 
@@ -23,8 +27,7 @@
                         <thead>
                         <tr>
                             <th class="wd-15p sorting_asc">ID</th>
-                            <th class="wd-15p sorting_asc">Name_EN</th>
-                            <th class="wd-15p sorting_asc">Name_Ar</th>
+                            <th class="wd-15p sorting_asc">Name</th>
                             <th class="wd-15p sorting_asc">Action</th>
 
                         </tr>
@@ -33,8 +36,7 @@
                         @foreach($categories as $key=>$row)
                             <tr>
                                 <td>{{ $key +1 }}</td>
-                                <td>{{ $row->name_en }}</td>
-                                <td>{{ $row->name_ar }}</td>
+                                <td>{{ $row->name }}</td>
 
 
                                 <td>
@@ -84,13 +86,11 @@
                         <form method="post" action="{{ route('admin.blog.category.store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Category Name English</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category" name="name_en">
+                                <label for="exampleInputEmail1">Category Name </label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category" name="name">
                             </div><!-- modal-body -->
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Category Name Arabic</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category" name="name_ar">
-                            </div><!-- modal-body -->
+
+
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary pd-x-20"> Submit</button>

@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetials extends Model
 {
-    //
+    public function getNameAttribute($value){
+
+        return ucfirst($value);
+
+    }
 
     protected $fillable=[
         'order_id',

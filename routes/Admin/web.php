@@ -130,18 +130,26 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
         Route::post('delivery-done/{id}', 'OrderController@deliveryDone')->name('delivery-done');
 
 
-//          Route::get('create', 'ProductController@create')->name('create');
-//        Route::get('get/sub-categories/{category_id}', 'ProductController@getsubcategories')->name('get-subcategories');
-//        Route::post('store', 'ProductController@store')->name('store');
-//        Route::post('status/status', 'ProductController@status')->name('status');
-//
-//        Route::get('{id}', 'ProductController@edit')->name('edit');
-//        Route::post('{id}', 'ProductController@update')->name('update');
-//        Route::post('delete/id', 'ProductController@destroy')->name('delete');
+    });
+
+    Route::group(['as'=>'seo.','prefix'=>'seo'],function (){
+
+        Route::get('index', 'SeoController@seo')->name('seo');
+        Route::post('update/{id}', 'SeoController@update')->name('update');
+
 
 
     });
 
+
+    Route::group(['as'=>'report.','prefix'=>'report'],function (){
+
+        Route::get('/{date}/{status}', 'ReportController@report')->name('all');
+        Route::get('/search', 'ReportController@search')->name('search');
+        Route::post('/search/result', 'ReportController@searchResult')->name('searchResult');
+
+
+    });
 
 
 });

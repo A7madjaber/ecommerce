@@ -3,7 +3,10 @@
 @section('content')
 
     <div class="sl-mainpanel">
-
+        <nav class="breadcrumb sl-breadcrumb">
+            <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+            <span class="breadcrumb-item active">Blog Posts</span>
+        </nav>
 
         <div class="sl-pagebody">
             <div class="sl-page-title">
@@ -13,7 +16,8 @@
 
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">Posts List
-                    <a href="{{route('admin.blog.post.create')}}" class="btn btn-sm btn-secondary" style="float: right;" ><i class="fa fa-plus"></i> Add New </a>
+                    <a href="{{route('admin.blog.post.create')}}" class="btn btn-sm btn-warning" style="float: right;" >
+                        <i class="fa fa-plus"></i> </a>
                 </h6>
 
 
@@ -22,10 +26,8 @@
                         <thead>
                         <tr>
                             <th class="wd-15p sorting_asc">ID</th>
-                            <th class="wd-15p sorting_asc">Title English</th>
-                            <th class="wd-15p sorting_asc">Category English</th>
-                            <th class="wd-15p sorting_asc">Title Arabic</th>
-                            <th class="wd-15p sorting_asc">Category Arabic</th>
+                            <th class="wd-15p sorting_asc">Title</th>
+                            <th class="wd-15p sorting_asc">Category</th>
                             <th class="wd-15p sorting_asc">Action</th>
 
                         </tr>
@@ -34,10 +36,8 @@
                         @foreach($posts as $key=>$row)
                             <tr>
                                 <td>{{ $key +1 }}</td>
-                                <td>{{ $row->title_en }}</td>
-                                <td>{{ $row->category->name_en }}</td>
-                                <td>{{ $row->title_ar }}</td>
-                                <td>{{ $row->category->name_ar }}</td>
+                                <td>{{ str_limit($row->title,20) }}</td>
+                                <td>{{ $row->category->name }}</td>
 
 
                                 <td>

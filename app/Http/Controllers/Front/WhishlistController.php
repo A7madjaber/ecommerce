@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\Whishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,9 +31,9 @@ class WhishlistController extends Controller
                 'user_id' => $userID,
                 'product_id' => $request->id,
             ]);
-            return response()->json(['message' => 'Product Already in your WishList','icon'=>'success']);
+            return response()->json(['message' => 'Product Added to your WishList','icon'=>'success']);
         }else{
-            return response()->json(['message' => 'Product Already Has on your WishList','icon'=>'error']);
+            return response()->json(['message' => 'Product Already in your WishList','icon'=>'error']);
 
         }
 
@@ -43,13 +44,11 @@ class WhishlistController extends Controller
 }
 
 
-    public function remove(Request $request){
+    public function remove($id){
 
 
-        $useID=Auth::id();
-        Whishlist::where('user_id',$useID)->where('product_id',$request->id)->delete();
-
-        return response()->json(['message'=>'Product Deleted From Whislist','icon'=>'info']);
+     Whishlist::findOrFail($id)->delete();
+       return redirect()->back()->with(['message' => 'Product deleted Successfully', 'alert-type' => 'success']);
 
     }
 

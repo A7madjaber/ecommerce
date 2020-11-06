@@ -34,8 +34,10 @@ class PostController extends Controller
             BlogPost::create([
                     'image' => date("m.d.y").$request->file('image')->getClientOriginalName(),
                 ]+ $request->all());
+        }else{
+            BlogPost::create($request->all());
         }
-        BlogPost::create($request->all());
+
 
         return redirect()->route('admin.blog.post.all')->with(['message'=>'Post Inserted Successfully','alert-type'=>'success']);
 

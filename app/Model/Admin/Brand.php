@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
+    public function getNameAttribute($value){
+
+        return ucfirst($value);
+
+    }
     protected $fillable = [
             'brand_name', 'brand_logo'
         ];

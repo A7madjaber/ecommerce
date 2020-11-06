@@ -2,10 +2,10 @@
 @section('content')
     <?php $orders=auth()->user()->orders ?>
 
-
     <div class="container">
+
             <div class="row">
-                <div class="col-8 ">
+                <div class="col-8 mr-5">
                     <table class="table table-response box-shadow">
                         <thead>
                         <tr>
@@ -15,7 +15,7 @@
                             <th scope="col">Date </th>
                             <th scope="col">Status  </th>
                             <th scope="col">Status Code </th>
-                            <th scope="col">Action </th>
+
 
                         </tr>
                         </thead>
@@ -44,9 +44,7 @@
                                 </td>
 
                                 <td scope="col">{{ $row->status_code }}  </td>
-                                <td scope="col">
-                                    <a href="" class="btn btn-sm btn-info"> View</a>
-                                </td>
+
                             </tr>
                         @endforeach
 
@@ -55,11 +53,10 @@
                     </table>
                 </div>
 
-                <div class="col-4 ">
-                    <div class="shadow card ">
+                <div class="col-3 ml-5">
 
 
-                    <div class="card box-shadow">
+                        <div class="card box-shadow">
                         <br>
                         <img src="{{Auth::user()->avatar? Auth::user()->avatar :  asset('front/images/avatar.png') }}"
                              class="img-fluid img-thumbnail" style="height: 90px; width: 90px; margin-left: 34%;">
@@ -85,11 +82,15 @@
 
             </div>
 
-        </div>
+
         <br>
         <br>
         <br>
 
 
 </div>
+
+
+
+
 @endsection

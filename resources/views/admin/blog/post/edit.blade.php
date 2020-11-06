@@ -16,17 +16,11 @@
                     @csrf
                     <div class="form-layout">
                         <div class="row mg-b-25">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label class="form-control-label">Post Title (English): <span class="tx-danger">*</span></label>
-                                    <input class="form-control" required type="text" name="title_en" value="{{$post->title_en}}">
-                                </div>
-                            </div><!-- col-6 -->
 
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Post Title (Arabic): <span class="tx-danger">*</span></label>
-                                    <input class="form-control" required type="text" name="title_ar"  value="{{$post->title_ar}}">
+                                    <label class="form-control-label">Post Title : <span class="tx-danger">*</span></label>
+                                    <input class="form-control" required type="text" name="title"  value="{{$post->title}}">
                                 </div>
                             </div><!-- col-6 -->
 
@@ -38,7 +32,7 @@
                                         @foreach($categories as $row)
                                             <option value="{{ $row->id }}"
                                                 {{$row->id == $post->category_id ?'selected' : ''}}>
-                                                {{ $row->name_ar }} ,  {{$row->name_en }}
+                                                 {{$row->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -48,17 +42,12 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-control-label">Post Details (English): <span class="tx-danger">*</span></label>
-                                    <textarea  class="form-control" id="summernote"  name="details_en" >{{$post->details_en}}</textarea>
+                                    <label class="form-control-label">Post Details : <span class="tx-danger">*</span></label>
+                                    <textarea  class="form-control" id="summernote"  name="details" >{{$post->details}}</textarea>
                                 </div>
                             </div><!-- col-4 -->
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label class="form-control-label">Post Details (Arabic): <span class="tx-danger">*</span></label>
-                                    <textarea  class="form-control" id="summernote2"  name="details_ar" >{{$post->details_ar}}</textarea>
-                                </div>
-                            </div><!-- col-4 -->
+
                         </div><!-- row -->
 
                         <div class="d-flex justify-content-center">
@@ -110,20 +99,6 @@
 
 
 
-    <script>
-        $(function(){
-            'use strict';
-
-            // Inline editor
-            var editor = new MediumEditor('.editable');
-
-            // Summernote editor
-            $('#summernote2').summernote({
-                height: 150,
-                tooltip: false
-            })
-        });
-    </script>
 
 
 @endsection

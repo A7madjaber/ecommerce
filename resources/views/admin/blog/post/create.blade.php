@@ -9,7 +9,7 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">New Post
-                    <a href="{{route('admin.blog.post.all')}}" class="btn btn-secondary btn-sm pull-right"> All Posts</a>
+                    <a href="{{route('admin.blog.post.all')}}" class="btn btn-warning btn-sm pull-right"> All Posts</a>
                 </h6>
                 <p class="mg-b-20 mg-sm-b-30">Add New Post Form</p>
                 <form method="post" action="{{route('admin.blog.post.store')}}" enctype="multipart/form-data">
@@ -18,17 +18,11 @@
                         <div class="row mg-b-25">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Post Title (English): <span class="tx-danger">*</span></label>
-                                    <input class="form-control" required type="text" name="title_en"  placeholder="Enter Post Title in English">
+                                    <label class="form-control-label">Post Title : <span class="tx-danger">*</span></label>
+                                    <input class="form-control" required type="text" name="title"  placeholder="Enter Post Title">
                                 </div>
                             </div><!-- col-6 -->
 
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label class="form-control-label">Post Title (Arabic): <span class="tx-danger">*</span></label>
-                                    <input class="form-control" required type="text" name="title_ar"  placeholder="Enter Post Title in Arabic">
-                                </div>
-                            </div><!-- col-6 -->
 
                             <div class="col-lg-4">
                                 <div class="form-group mg-b-10-force">
@@ -36,7 +30,7 @@
                                     <select class="form-control select2" data-placeholder="Choose Category" required name="category_id">
                                         <option label="Choose Category"></option>
                                         @foreach($categories as $row)
-                                            <option value="{{ $row->id }}">{{ $row->name_ar }} , {{$row->name_en }}</option>
+                                            <option value="{{ $row->id }}">{{ $row->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -45,17 +39,11 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="form-control-label">Post Details (English): <span class="tx-danger">*</span></label>
-                                    <textarea  class="form-control" id="summernote"  name="details_en" ></textarea>
+                                    <label class="form-control-label">Post Details : <span class="tx-danger">*</span></label>
+                                    <textarea  class="form-control" id="summernote"  name="details" ></textarea>
                                 </div>
                             </div><!-- col-4 -->
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label class="form-control-label">Post Details (Arabic): <span class="tx-danger">*</span></label>
-                                    <textarea  class="form-control" id="summernote2"  name="details_ar" ></textarea>
-                                </div>
-                            </div><!-- col-4 -->
                         </div><!-- row -->
 
                         <div class="d-flex justify-content-center">
@@ -105,21 +93,6 @@
     </script>
 
 
-
-    <script>
-        $(function(){
-            'use strict';
-
-            // Inline editor
-            var editor = new MediumEditor('.editable');
-
-            // Summernote editor
-            $('#summernote2').summernote({
-                height: 150,
-                tooltip: false
-            })
-        });
-    </script>
 
 
 @endsection

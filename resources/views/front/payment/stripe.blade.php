@@ -44,6 +44,7 @@
 
 @endpush
 
+@include('front.layouts.mnu')
 
 <div class="contact_form" style="background: #f9f9f9">
 

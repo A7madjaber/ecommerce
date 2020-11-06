@@ -3,7 +3,10 @@
 @section('content')
 
  <div class="sl-mainpanel">
-
+     <nav class="breadcrumb sl-breadcrumb">
+         <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+         <span class="breadcrumb-item active">Edit blog Category</span>
+     </nav>
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
@@ -32,15 +35,10 @@
          <div class="modal-body pd-20">
         <div class="form-group">
           <label for="exampleInputEmail1">Category Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $category->name_en }}" name="name_en">
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $category->name }}" name="name">
 
         </div>
 
-             <div class="form-group">
-          <label for="exampleInputEmail1">Category Arabic Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $category->name_ar }}" name="name_ar">
-
-        </div>
 
               </div><!-- modal-body -->
               <div class="modal-footer">

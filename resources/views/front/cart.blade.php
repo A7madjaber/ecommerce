@@ -8,8 +8,10 @@
         @endpush
     <!-- Cart -->
 
-
-        <div class="container" >
+    @include('front.layouts.mnu')
+<br>
+<br>
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="cart_container">
@@ -218,7 +220,6 @@
                 },
 
             })
-
 
         });
 

@@ -10,6 +10,12 @@ use Intervention\Image\Facades\Image;
 class Product extends Model
 {
 
+    public function getNameAttribute($value){
+
+        return ucfirst($value);
+
+    }
+
     protected $fillable=[
         'category_id', 'sub_category_id', 'quantity', 'brand_id','name', 'details',
         'product_code', 'color','size','price','discount_price', 'video','main_slider','hot_deal','hot_new',

@@ -15,7 +15,7 @@ class OrderController extends Controller
 
     public function all(){
 
-        $order=Order::all();
+        $order=Order::orderBy('created_at','desc')->get();
         return view('admin.order.all',compact('order'));
     }
 

@@ -12,6 +12,10 @@
 
 
     <div class=" sl-mainpanel ">
+        <nav class="breadcrumb sl-breadcrumb">
+            <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+            <span class="breadcrumb-item active">View Order</span>
+        </nav>
                 <div class="sl-pagebody">
 
                     <div class="card pd-20 pd-sm-40 ">

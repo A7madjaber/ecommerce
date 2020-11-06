@@ -23,8 +23,7 @@ public function category(){
     {
 
         $request->validate([
-            'name_ar' => 'required|unique:blog_categories|max:255',
-            'name_en' => 'required|unique:blog_categories|max:255',
+            'name' => 'required|unique:blog_categories,name|max:255',
         ]);
         BlogCategory::create($request->all());
         return Redirect()->back()->with(['message' => 'Category Added Successfully', 'alert-type' => 'success']);
@@ -42,23 +41,16 @@ public function category(){
     {
         $request->validate([
 
-            'name_en' => 'required|max:255|unique:blog_categories,name_en,'.$id,
-            'name_ar' => 'required|max:255|unique:blog_categories,name_ar,'.$id,
+            'name' => 'required|max:255|unique:blog_categories,name,'.$id,
+
         ]);
+
+       
 
         BlogCategory::findOrFail($id)->update($request->all());
         return Redirect()->route('admin.blog.category.all')
             ->with(['message' => 'Category Updated Successfully', 'alert-type' => 'success']);
     }
-
-
-
-
-
-
-
-
-
 
 
 

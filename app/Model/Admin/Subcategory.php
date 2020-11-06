@@ -5,6 +5,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subcategory extends Model
 {
+    public function getNameAttribute($value){
+
+        return ucfirst($value);
+
+    }
+
     protected $fillable = [
             'category_id','subcategory_name'
         ];

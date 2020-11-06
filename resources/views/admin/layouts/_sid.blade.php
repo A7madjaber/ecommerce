@@ -16,7 +16,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <i class="menu-item-icon icon ion-grid tx-20"></i>
                 <span class="menu-item-label">Category</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -29,7 +29,7 @@
         </ul>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-ios-offer-outline tx-24"></i>
+                <i class="menu-item-icon icon icon ion-star tx-24"></i>
                 <span class="menu-item-label">Coupons</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -41,7 +41,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+                <i class="menu-item-icon icon ion-navicon-round tx-20"></i>
                 <span class="menu-item-label">Products</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -52,18 +52,14 @@
         </ul>
 
 
-        <a href="#" class="sl-menu-link">
+        <a href="{{route('admin.order.all')}}" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+                <i class="menu-item-icon ion-clipboard tx-20"></i>
                 <span class="menu-item-label">Orders</span>
-                <i class="menu-item-arrow fa fa-angle-down"></i>
+
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
 
-            <li class="nav-item"><a href="{{route('admin.order.all')}}" class="nav-link"> All Orders</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Others</a></li>
-        </ul>
 
 
         <a href="#" class="sl-menu-link">
@@ -75,6 +71,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{route('admin.coupon.newsletters')}}" class="nav-link">Newsletters</a></li>
+            <li class="nav-item"><a href="{{route('admin.seo.seo')}}" class="nav-link">SEO Setting</a></li>
         </ul>
 
         <a href="#" class="sl-menu-link">
@@ -92,14 +89,17 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-ios-navigate-outline tx-24"></i>
-                <span class="menu-item-label">Maps</span>
+                <i class="menu-item-icon ion-filing tx-20"></i>
+                <span class="menu-item-label">Reports</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-            <li class="nav-item"><a href="map-google.html" class="nav-link">Google Maps</a></li>
-            <li class="nav-item"><a href="map-vector.html" class="nav-link">Vector Maps</a></li>
+            <li class="nav-item"><a href="{{route('admin.report.all',[date('d-m-y'),'0'])}}" class="nav-link">Today Orders</a></li>
+            <li class="nav-item"><a href="{{route('admin.report.all',[date('d-m-y'),'3'])}}" class="nav-link">Today Delivery</a></li>
+            <li class="nav-item"><a href="{{route('admin.report.all',[date('F'),'0'])}}" class="nav-link">This Month Orders</a></li>
+            <li class="nav-item"><a href="{{route('admin.report.all',[date('F'),'3'])}}" class="nav-link">This Month Delivery</a></li>
+            <li class="nav-item"><a href="{{route('admin.report.search')}}" class="nav-link">Search Report</a></li>
         </ul>
         <a href="mailbox.html" class="sl-menu-link">
             <div class="sl-menu-item">

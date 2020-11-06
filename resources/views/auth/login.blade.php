@@ -1,13 +1,15 @@
 @extends('front.index')
 @section('content')
 
+    @include('front.layouts.mnu')
+
     <hr>
 
 
                 <div class="contact_form">
                     <div class="container">
 
-            <div class="row d-flex justify-content-center ">
+            <div class="row d-flex justify-content-center ml-5 ">
                 <div class="col-lg-4 box-shadow" style="border: 1px solid #fafafa; padding: 20px; border-radius: 10px; width: 90%">
                     <div class="contact_form_container ">
                         <div class="title text-center "><h3 class="font-weight-light ">Login</h3></div>

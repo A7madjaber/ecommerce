@@ -7,12 +7,11 @@ use Intervention\Image\Facades\Image;
 class BlogPost extends Model
 {
     protected $fillable=[
-        'title_ar',
-        'title_en',
+        'title',
         'image',
         'category_id',
-        'details_en',
-        'details_ar',
+        'details',
+
 
         ];
 

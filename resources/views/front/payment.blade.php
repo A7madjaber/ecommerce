@@ -6,6 +6,9 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/contact_responsive.css') }}">
     @endpush
 
+    @include('front.layouts.mnu')
+
+
 
     <div class="contact_form">
         <div class="container">

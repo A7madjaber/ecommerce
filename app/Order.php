@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
+public function getNameAttribute($value){
+
+    return ucfirst($value);
+
+}
+
+
     protected $fillable=[
         'user_id',
         'payment_type',

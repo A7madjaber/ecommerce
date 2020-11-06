@@ -5,7 +5,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/cart_styles.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('front/styles/cart_responsive.css') }}">
     @endpush
+    @include('front.layouts.mnu')
 
+    <br>
+    <br>
 
     <!-- Cart -->
     <div class="container" id="row">

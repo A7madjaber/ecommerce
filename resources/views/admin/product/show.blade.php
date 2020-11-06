@@ -2,7 +2,8 @@
 @section('content')
   <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
-        <nav class="breadcrumb sl-breadcrumb">
+
+            <nav class="breadcrumb sl-breadcrumb">
             <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
             <span class="breadcrumb-item active">Product Details</span>
         </nav>

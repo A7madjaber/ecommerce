@@ -2,6 +2,10 @@
 @section('content')
 
     <div class="sl-mainpanel">
+        <nav class="breadcrumb sl-breadcrumb">
+            <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+            <span class="breadcrumb-item active">Products</span>
+        </nav>
         <div class="sl-pagebody">
             <div class="sl-page-title">
                 <h5>Product Table</h5>
@@ -9,8 +13,8 @@
 
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">Products List
-                    <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-secondary" style="float: right;">
-                        <i class="fa fa-plus"></i> Add New </a>
+                    <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-warning" style="float: right;">
+                        <i class="fa fa-plus"></i></a>
                 </h6>
 
                 <div class="table-wrapper">

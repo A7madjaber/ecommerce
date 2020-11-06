@@ -11,6 +11,11 @@ class Whishlist extends Model
     protected $fillable = ['product_id', 'user_id'];
 
 
+    public function getNameAttribute($value){
+
+        return ucfirst($value);
+
+    }
 
     public function users()
     {

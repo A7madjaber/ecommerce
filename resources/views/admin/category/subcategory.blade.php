@@ -4,7 +4,10 @@
 
  <div class="sl-mainpanel">
 
-
+     <nav class="breadcrumb sl-breadcrumb">
+         <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+         <span class="breadcrumb-item active">Sub Categories</span>
+     </nav>
       <div class="sl-pagebody">
         <div class="sl-page-title">
           <h5>Sub Category Table</h5>
@@ -13,8 +16,8 @@
 
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Sub Category List
-              <a href="#" class="btn btn-sm btn-secondary" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
-                  <i class="fa fa-plus"></i> Add New </a>
+              <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+                  <i class="fa fa-plus"></i></a>
 
           </h6>
 
@@ -36,11 +39,14 @@
                   <td>{{ $key +1 }}</td>
                   <td>{{ $row->subcategory_name }}</td>
                    <td>{{ $row->category->category_name}}</td>
-                  <td>
+
+
+                    <td>
                       <a href="{{route('admin.subCategory.edit',$row->id)}}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
 
                       <a href="" id="delete" route="{{route('admin.subCategory.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
                   </td>
+
 
                 </tr>
                 @endforeach

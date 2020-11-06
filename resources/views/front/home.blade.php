@@ -6,114 +6,7 @@
 
 ?>
 
-<nav class="main_nav">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-
-                <div class="main_nav_content d-flex flex-row">
-
-                    <!-- Categories Menu -->
-
-                    <div class="cat_menu_container">
-                        <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                            <div class="cat_burger"><span></span><span></span><span></span></div>
-                            <div class="cat_menu_text">categories</div>
-                        </div>
-
-
-
-                        <ul class="cat_menu">
-                            @foreach(categories() as $category)
-
-
-                                <li class="hassubs">
-
-                                    <a href="#">{{$category->category_name}}
-
-                                        @if($category->subCategories()->exists())
-                                            <i class="fas fa-chevron-right"></i></a>
-                                    <ul>
-
-                                        @foreach($category->subCategories as $row)
-                                            <li class="hassubs">
-                                                <a href="#">{{$row->subcategory_name}}</a>
-                                            </li>
-                                        @endforeach
-
-                                    </ul>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-
-                    </div>
-
-                    <!-- Main Nav Menu -->
-
-                    <div class="main_nav_menu ml-auto">
-                        <ul class="standard_dropdown main_nav_dropdown">
-                            <li><a href="{{route('home')}}">Home<i class="fas fa-chevron-down"></i></a></li>
-                            <li class="hassubs">
-                                <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="hassubs">
-                                <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-
-                                    @foreach( brands() as $brand)
-
-                                        <li><a href="#">{{$brand->brand_name}}<i class="fas fa-chevron-down"></i></a></li>
-                                    @endforeach
-
-                                </ul>
-                            </li>
-                            <li class="hassubs">
-                                <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                            <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Menu Trigger -->
-
-                    <div class="menu_trigger_container ml-auto">
-                        <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-                            <div class="menu_burger">
-                                <div class="menu_trigger_text">menu</div>
-                                <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+@include('front.layouts.mnu')
 
 <!-- Menu -->
 
@@ -130,26 +23,9 @@
                         </form>
                     </div>
                     <ul class="page_menu_nav">
-                        <li class="page_menu_item has-children">
-                            <a href="#">Language<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Currency<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
+
                         <li class="page_menu_item">
-                            <a href="#">Home<i class="fa fa-angle-down"></i></a>
+                            <a href="{{route('home')}}">Home<i class="fa fa-angle-down"></i></a>
                         </li>
                         <li class="page_menu_item has-children">
                             <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
@@ -175,9 +51,9 @@
                             <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
                             <ul class="page_menu_selection">
 
-                                <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="">Featured Brands<i class="fa fa-angle-down"></i></a></li>
                                 @foreach(brands() as $brand)
-                                    <li><a href="#">{{$brand->brand_name}}<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="{{route('product.brand',$brand->id)}}">{{$brand->brand_name}}<i class="fa fa-angle-down"></i></a></li>
                                 @endforeach
 
                             </ul>
@@ -192,7 +68,7 @@
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                             </ul>
                         </li>
-                        <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item"><a href="{{route('blog.posts')}}">blog<i class="fa fa-angle-down"></i></a></li>
                         <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
                     </ul>
 
@@ -214,6 +90,7 @@
         <div class="container fill_height">
             <div class="row fill_height">
                 <div class="banner_product_image"><img src="{{@asset('public/media/product/'.$productMain->image_one)}}" alt=""></div>
+               @if($productMain!=null)
                 <div class="col-lg-5 offset-lg-4 fill_height">
                     <div class="banner_content">
                         <h1 class="banner_text">{{@$productMain->name}}</h1>
@@ -231,9 +108,10 @@
                         <div class="banner_product_name">{{@$productMain->brand->brand_name}}</div>
 
 
-                        <div class="button banner_button"><a href="#">Shop Now</a></div>
+                        <div class="button banner_button"><a href="{{route('product',$productMain->id)}}">Shop Now</a></div>
                     </div>
                 </div>
+                   @endif
             </div>
         </div>
     </div>
@@ -572,7 +450,7 @@
                                        <h2> {{$product->price}} </h2>
                                         </div>
                                         <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                        <div class="button banner_2_button"><a href="#">Explore</a></div>
+                                        <div class="button banner_2_button"><a href="{{route('product',$product->id)}}">Explore</a></div>
                                     </div>
 
                                 </div>
@@ -645,16 +523,18 @@
                                                         <div class="product_name">
                                                             <div><a href="product.html">{{$product->name}}</a></div></div>
                                                         <div class="product_extras">
-                                                            <div class="product_color">
-                                                                <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                                <input type="radio" name="product_color" style="background:#000000">
-                                                                <input type="radio" name="product_color" style="background:#999999">
+
+
+
+                                                                <button id="{{ $product->id }}"
+                                                                        class="product_cart_button "
+                                                                        data-toggle="modal"
+                                                                        data-target="#cartmodal"
+                                                                        onclick="productview(this.id)">
+
+                                                                    Add to Cart</button>
                                                             </div>
 
-
-                                                            <button class="product_cart_button">Add to Cart</button>
-
-                                                        </div>
                                                     </div>
 
 
@@ -748,21 +628,21 @@
                                                     @endif
 
                                                     <div class="product_name">
-                                                        <div><a href="product.html">{{$product->name}}</a></div></div>
+                                                        <div><a href="{{route('product',$product->id)}}">{{$product->name}}</a></div></div>
 
 
 
-                                                    <div class="product_extras">
-                                                        <div class="product_color">
-                                                            <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                            <input type="radio" name="product_color" style="background:#000000">
-                                                            <input type="radio" name="product_color" style="background:#999999">
+                                                        <div class="product_extras">
+
+                                                            <button id="{{ $product->id }}"
+                                                                    class="product_cart_button "
+                                                                    data-toggle="modal"
+                                                                    data-target="#cartmodal"
+                                                                    onclick="productview(this.id)">
+
+                                                                Add to Cart</button>
                                                         </div>
 
-
-                                                        <button class="product_cart_button">Add to Cart</button>
-
-                                                    </div>
                                                 </div>
 
 
@@ -1589,7 +1469,7 @@
                                     <div class="trends_content">
                                         <div class="trends_category"><a href="#">{{@$product->brand->brand_name}}</a></div>
                                         <div class="trends_info clearfix">
-                                            <div class="trends_name"><a href="product.html">{{$product->name}}</a></div>
+                                            <div class="trends_name"><a href="{{route('product',$product->id)}}">{{$product->name}}</a></div>
 
 
                                             @if($product->discount_price == NULL)
@@ -1598,7 +1478,18 @@
                                                 <div class="product_price discount">${{ $product->discount_price }}<span>${{ $product->price }}</span></div>
                                             @endif
 
-                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i></a>
+
+
+                                                <a href="#" class="btn btn-primary btn-sm" id="{{ $product->id }}"
+                                                        class="product_cart_button "
+                                                        data-toggle="modal"
+                                                        data-target="#cartmodal"
+                                                        onclick="productview(this.id)">
+                                                    <i class="fa fa-shopping-cart"></i>
+
+                                                 </a>
+
+
 
                                         </div>
 
@@ -1611,7 +1502,11 @@
                                     <li class="trends_mark trends_new">BuyGet</li>
                                 </ul>
 
-                                    <div class="trends_fav"><i class="fas fa-heart"></i></div>
+                                    <a href="#" id="Whish" route="{{route('add.wihshList',$product->id)}}"
+                                       model_id="{{$product->id}}">
+                                        <div class="trends_fav"><i class="fas fa-heart"></i></div></a>
+
+
                                 </div>
                             </div>
 
@@ -2043,7 +1938,7 @@
     });
 </script>
 
-{{--    add to cart moodal--}}
+{{--    add to cart form moodal--}}
 
 <script type="text/javascript">
         function productview(id){
@@ -2078,7 +1973,7 @@
 
     </script>
 
-{{--add to cart ftom moodal --}}
+{{--add to product to moodal --}}
     <script>
 
 

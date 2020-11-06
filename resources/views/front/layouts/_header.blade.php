@@ -11,17 +11,23 @@
                     <div class="top_bar_content ml-auto">
 
                         <div class="top_bar_menu">
-                            <a href="#">
+
+                            @if(auth()->check())
+                            <a href="#" data-toggle="modal" data-target="#exampleModal">
                                 <div class="top_bar_contact_item">
                                     <i class="fa fa-truck"></i>
-                                    Track My Orders</div>
+                                    Track My Order</div>
                             </a>
 
+                                @endif
                         </div>
+
                         <div class="top_bar_user">
 
 
                             @guest
+
+
 
                                     <div class="user_icon"><img src="{{ asset('front/images/user.svg')}}" alt="">
                                     </div>
@@ -31,12 +37,19 @@
                                 <div>
                                     <a href="{{ route('register') }}">
                                         Register</a></div>
+
+
+
                             @else
+
+
                                 <ul class="standard_dropdown top_bar_dropdown">
                                     <li>
-                                        <a href="{{ route('profile') }}"><div class="user_icon"><img src="{{ asset('front/images/user.svg')}}" alt=""></div> Profile<i class="fas fa-chevron-down"></i></a>
+                                        <a href="{{ route('profile') }}">
+                                            <div class="user_icon"><img src="{{ asset('front/images/user.svg')}}" alt="">
+                                            </div> Profile<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <li><a href="">Wishlist</a></li>
+
                                             <li><a href="{{route('user.checkout')}}">Checkout</a></li>
                                             <li><a href="{{route('user.logout')}}">Logout</a></li>
                                         </ul>
@@ -136,6 +149,11 @@
             </div>
         </div>
     </div>
+
+
+
+
+
 
     <!-- Main Navigation -->
 

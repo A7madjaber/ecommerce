@@ -1,10 +1,16 @@
 
-<link rel="stylesheet" type="text/css" href="{{asset('front/styles/product_styles.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('front/styles/product_responsive.css')}}">
 @extends('front.index',['title'=>$product->name])
 
 @section('content')
 
+    @push('front-css')
+
+        <link rel="stylesheet" type="text/css" href="{{asset('front/styles/product_styles.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('front/styles/product_responsive.css')}}">
+    @endpush
+
+
+    @include('front.layouts.mnu')
 
 
     <div class="single_product">
@@ -121,10 +127,7 @@
                 <div class="col">
                     <div class="viewed_title_container">
                         <h3 class="viewed_title">Product Details</h3>
-                        <div class="viewed_nav_container">
-                            <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
-                            <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
-                        </div>
+
                     </div>
 
 
@@ -169,7 +172,9 @@
 
                         <div class="owl-carousel owl-theme brands_slider">
                             @foreach(brands() as $brand)
-                                <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="{{$brand->brand_logo}}" style="width: 120px" alt=""></div></div>
+                                <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center">
+                                        <img src="{{asset($brand->brand_logo)}}"
+                                             style="width: 120px" alt=""></div></div>
                             @endforeach
                         </div>
 

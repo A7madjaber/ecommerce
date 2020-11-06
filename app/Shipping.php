@@ -14,7 +14,11 @@ class Shipping extends Model
         'ship_address',
         'ship_city',
     ];
+    public function getNameAttribute($value){
 
+        return ucfirst($value);
+
+    }
     public function order(){
 
         return $this->belongsTo(Order::class,'order_id');
