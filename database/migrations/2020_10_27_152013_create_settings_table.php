@@ -20,8 +20,12 @@ class CreateSettingsTable extends Migration
             $table->string('shop_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('phone_two')->nullable();
             $table->string('address')->nullable();
             $table->string('logo')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
             $table->timestamps();
         });
     }

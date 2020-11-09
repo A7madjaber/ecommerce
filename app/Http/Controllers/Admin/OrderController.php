@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\Admin\Product;
 use App\Order;
+use App\OrderDetials;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -45,15 +47,51 @@ class OrderController extends Controller
 
     //    method for accept process-delivery order
     public function processDelivery($id){
+       $order= Order::findOrFail($id);
 
-        Order::findOrFail($id)->update(['status'=>2]);
+       $products=OrderDetials::where('order_id',$id)->get();
+
+       foreach ($products as $pro){
+          $x= Product::where('id',$pro->product_id)
+               ->decrement('quantity', $pro->quantity);
+       }
+
+
+        $order->update(['status'=>2]);
         return response()->json(['message' =>'Order Send To Delivery  Successfully','icon'=>'success']);
+
     }
 
     //    method for accept Done process-delivery order
     public function deliveryDone($id){
 
         Order::findOrFail($id)->update(['status'=>3]);
-        return response()->json(['message' => 'Delivery Process Successfully Done','icon'=>'success']);
+        return response()->json(['message' => 'Delivery Process Successfully ','icon'=>'success']);
+    }
+
+
+    public function return(){
+
+
+        $orders=Order::where('return_order','!=',0)->whereIn('status',[0,1,2,3])->orderBy('created_at','desc')->get();
+        return view('admin.order.return',compact('orders'));
+    }
+
+    public function returnApprove(Request $request){
+
+         $order=Order::findOrFail($request->id);
+
+
+
+
+        $order->update(['return_order'=> 2]);
+
+
+
+
+        return response()->json(['message' => 'Order Return Successfully ','icon'=>'success']);
+
+
     }
 }
+

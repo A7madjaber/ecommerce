@@ -6,8 +6,24 @@
         <div class="container">
             <div class="row">
                 <div class="col d-flex flex-row">
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('front/images/phone.png')}}" alt=""></div>+38 068 005 3570</div>
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('front/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                    <div class="top_bar_contact_item">
+                        <div class="top_bar_icon">
+                            <img src="{{asset('front/images/phone.png')}}" alt="">
+                        </div>{{Settings()->phone}}
+                    </div>
+
+                   <div class="top_bar_contact_item ml-3 ">
+                        <div class="top_bar_icon">
+                            <img src="{{asset('front/images/phone.png')}}" alt="">
+                        </div>{{Settings()->phone_two}}
+                    </div>
+
+
+
+                    <div class="top_bar_contact_item ml-5 ">
+                        <div class="top_bar_icon">
+                            <img src="{{asset('front/images/mail.png')}}" alt="">
+                        </div><a href="mailto:fastsales@gmail.com">{{Settings()->email}}</a></div>
                     <div class="top_bar_content ml-auto">
 
                         <div class="top_bar_menu">
@@ -76,7 +92,8 @@
                 <!-- Logo -->
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a href="{{route('home')}}"><img src="{{asset('front/images/logo.png')}}"></a></div>
+                        <div class="logo"><a href="{{route('home')}}">
+                                <img src="{{asset('public/media/logo/'.Settings()->logo)}}"></a></div>
                     </div>
                 </div>
 

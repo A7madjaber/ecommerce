@@ -12,19 +12,20 @@
                     <a href="{{route('admin.blog.post.all')}}" class="btn btn-secondary btn-sm pull-right"> All Posts</a>
                 </h6>
                 <p class="mg-b-20 mg-sm-b-30">Add New Post Form</p>
-                <form method="post" action="{{route('admin.blog.post.update',$post->id)}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('admin.blog.post.update',$post->id)}}"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="form-layout">
                         <div class="row mg-b-25">
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Post Title : <span class="tx-danger">*</span></label>
                                     <input class="form-control" required type="text" name="title"  value="{{$post->title}}">
                                 </div>
                             </div><!-- col-6 -->
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group mg-b-10-force">
                                     <label class="form-control-label">Category: <span class="tx-danger">*</span></label>
                                     <select class="form-control select2" data-placeholder="Choose Category" required name="category_id">

@@ -52,7 +52,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-5  box-shadow " style=" padding: 20px; border-radius: 10px;">
                 <div class="contact_form_container">
-                    <div class="contact_form_title text-center font-weight-light">Shipping Address</div>
+                    <div class="contact_form_title text-center font-weight-light">Card NO</div>
                     <form action="{{route('stripe.charge')}}" method="post" id="payment-form">
                         @csrf
                         <div class="form-row">

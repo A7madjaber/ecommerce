@@ -1,4 +1,4 @@
-@extends('front.index')
+@extends('front.index',['title'=>'Login'])
 @section('content')
 
     @include('front.layouts.mnu')

@@ -128,6 +128,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
         Route::post('cancel/{id}', 'OrderController@cancel')->name('cancel');
         Route::post('process-delivery/{id}', 'OrderController@processDelivery')->name('process-delivery');
         Route::post('delivery-done/{id}', 'OrderController@deliveryDone')->name('delivery-done');
+        Route::get('return/all', 'OrderController@return')->name('return');
+        Route::post('return/approve', 'OrderController@returnApprove')->name('return.approve');
 
 
     });
@@ -151,6 +153,21 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
 
     });
 
+    Route::group(['as'=>'settings.','prefix'=>'settings'],function (){
+        Route::get('site', 'SettingController@settings')->name('settings');
+        Route::post('update/{id}', 'SettingController@update')->name('update');
 
+
+
+    });
+
+    Route::group(['as'=>'message.','prefix'=>'message'],function (){
+        Route::get('message/all', 'MessageController@all')->name('all');
+        Route::get('message/{id}', 'MessageController@show')->name('show');
+        Route::post('replay', 'MessageController@replay')->name('replay');
+
+
+
+    });
 });
 

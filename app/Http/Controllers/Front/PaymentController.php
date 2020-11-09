@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Mail\InvoiceMail;
 use App\Order;
 use App\OrderDetials;
 use App\Shipping;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Stripe\Charge;
 
@@ -121,6 +123,8 @@ class PaymentController extends Controller
 
    Cart::destroy();
       Session::has('coupon') ? Session::forget('coupon') : '';
+
+      Mail::to($user->email)->send(new InvoiceMail($order));
 
       return redirect()->route('home')->with(['message'=>'Order Process Successfully Done','alert-type'=>'success']);
 

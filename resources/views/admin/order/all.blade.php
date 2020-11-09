@@ -37,9 +37,9 @@
                         <tr>
                             <td>{{ $row->payment_type }}</td>
                             <td>{{ $row->blnc_transection }}</td>
-                            <td>{{ $row->subtotal }} $</td>
-                            <td>{{ $row->shipping }} $</td>
-                            <td>{{ $row->total }} $</td>
+                            <td>{{ $row->subtotal }} </td>
+                            <td>{{ $row->shipping }} </td>
+                            <td>{{ $row->total }} </td>
                             <td>{{ $row->date }}  </td>
 
                             <td>

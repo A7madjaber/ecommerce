@@ -1,4 +1,4 @@
-@extends('front.index',['title'=>'Home'])
+@extends('front.index',['title'=>'home'])
 
 @section('content')
 

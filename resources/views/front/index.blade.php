@@ -10,6 +10,7 @@
 
     @include('front.layouts._css')
 
+
 </head>
 
 <body>

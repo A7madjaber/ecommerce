@@ -10,7 +10,6 @@
                         <thead>
                         <tr>
                             <th scope="col">Payment Type </th>
-                            <th scope="col">Payment ID </th>
                             <th scope="col">Amount </th>
                             <th scope="col">Date </th>
                             <th scope="col">Status  </th>
@@ -23,7 +22,7 @@
                         @foreach($orders as $row)
                             <tr>
                                 <td scope="col">{{ $row->payment_type }} </td>
-                                <td scope="col">{{ $row->payment_id }} </td>
+
                                 <td scope="col">{{ $row->total }} </td>
                                 <td scope="col">{{ $row->date }}  </td>
 
@@ -68,7 +67,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"> <a href="{{ route('password.change') }}">Change Password</a>  </li>
                             <li class="list-group-item">Edit Profile</li>
-                            <li class="list-group-item"><a href="#"> Return Order</a> </li>
+                            <li class="list-group-item"><a href="{{route('return.order.list')}}"> Return Order</a> </li>
                         </ul>
 
                         <div class="card-body">

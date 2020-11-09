@@ -111,6 +111,8 @@
                                 </div>
 
                             </form>
+
+
                         </div>
                     </div>
                 </div>
@@ -151,6 +153,7 @@
 
                             <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>
 
+
                         </div>
                     </div>
 
@@ -188,10 +191,13 @@
         </div>
     </div>
 
+
 @push('front-js')
 
     <script src="{{asset('front/plugins/easing/easing.js')}}"></script>
     <script src="{{asset('front/js/product_custom.js')}}"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=323572825316171&autoLogAppEvents=1" nonce="9KvkcnaH"></script>
 
 
 @endpush

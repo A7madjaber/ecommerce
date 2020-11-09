@@ -8,6 +8,7 @@
          <span class="breadcrumb-item active">Categories</span>
      </nav>
 
+
       <div class="sl-pagebody">
         <div class="sl-page-title">
           <h5>Category Table</h5>

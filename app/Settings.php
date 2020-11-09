@@ -12,4 +12,21 @@ class Settings extends Model
         return ucfirst($value);
 
     }
+
+    protected $fillable=[
+
+        'vat',
+        'shipping_charge',
+        'shop_name',
+        'email',
+        'phone',
+        'phone_two',
+        'address',
+        'logo',
+        'facebook',
+        'twitter',
+        'twitter',
+        'instagram',
+
+    ];
 }

@@ -65,5 +65,9 @@ Route::post('subscribe/news', 'Front\FrontController@subscribenewsLetter')->name
 
 Route::post('track/order', 'Front\FrontController@track')->name('order.tracking');
 
+Route::get('return/orders/list', 'Front\FrontController@returnOrderList')->name('return.order.list');
+Route::get('return/order/{id}', 'Front\FrontController@returnOrder')->name('return.order');
 
+route::get('contact','Front\FrontController@contact')->name('contact');
+route::post('contact','Front\FrontController@contactSend')->name('contact.send');
 

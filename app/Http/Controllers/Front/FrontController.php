@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\NewsLetter;
 use App\Model\Admin\Subcategory;
@@ -9,6 +10,7 @@ use App\Model\Blog\BlogPost;
 use App\Order;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -63,4 +65,34 @@ class FrontController extends Controller
 
         }else return redirect()->back()->with(['message'=>'Invalid Status Code','alert-type'=>'error']);
     }
+
+
+public function returnOrderList(){
+
+
+        $orders=Order::where('user_id',Auth::id())->orderBy('created_at','desc')->get();
+        return view('profile.return_order',compact('orders'));
 }
+
+    public function returnOrder($id){
+
+
+        $order=Order::where('user_id',Auth::id())->where('id',$id);
+        $order->update(['return_order'=>1]);
+
+        return redirect()->back()->with(['message'=>'Your Request Return Order Done ','alert-type'=>'success']);
+    }
+
+
+
+    public function contact(){
+        return view('front.contact');
+    }
+
+   public function  contactSend(Request $request){
+        Contact::create($request->all());
+       return Redirect()->route('homes')->with(['message' => 'Your  Message Send Successfully', 'alert-type' => 'success']);
+    }
+}
+
+

@@ -15,19 +15,20 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="cart_container">
-                        <div class="cart_title font-weight-light">Shopping Cart</div>
+
                         <div id="cart" class="cart_items">
 
 
                                 @if(Cart::total()==0.00)
-                                <ul class="cart_list">
-                                    <li class="cart_item clearfix">
-                                    <h2 class="title font-weight-light">The cart Is Empty</h2>
-                                    </li>
 
-                            </ul>
+                                    <div class="d-flex justify-content-center" style="margin: -100px">
+                                        <img src="{{asset('front/images/empty-cart.png')}}">
+                                    </div>
+
+
                                     @else
 
+                                <div class="cart_title font-weight-light">Shopping Cart</div>
                                 <ul class="cart_list">
 
                                 @foreach($cart as $row)
