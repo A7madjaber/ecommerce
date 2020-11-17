@@ -99,7 +99,7 @@
 
 
                                 @if($product->discount_price == NULL)
-                                    <div class="product_price">{{ $product->price}}<span> </div>
+                                        <div class="product_price">{{ $product->price}}<span> </span></div>
                                 @else
                                     <div class="product_price">{{ $product->discount_price }}<span>
                                             {{ $product->price }}</span></div>
@@ -137,18 +137,26 @@
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Product Details</a>
                         </li>
+                        @if($product->video)
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Video Link</a>
                         </li>
-                        <li class="nav-item">
+                        @endif
+                            <li class="nav-item">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Product Review</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <br>{!! $product->details !!}</div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <br>{{ $product->video }}</div>
+                        <div class="tab-pane fade " style="margin-left: 200px" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <br>
+                            <iframe width="720" height="345" src="{{$product->video}}">
+                            </iframe>
+
+
+
+                        </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br>
 
                             <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>

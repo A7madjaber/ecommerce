@@ -5,6 +5,10 @@ Route::get('/', function () {
     return view('front.home');
 })->name('home');
 
+Route::get('login/{provider}', 'GoogleLoginController@redirect');
+
+Route::get('{provider}/callback','GoogleLoginController@Callback');
+
 
 //auth & user
 Auth::routes(['verify'=>true]);
@@ -45,7 +49,8 @@ Route::get('coupon/remove', 'Front\CartController@couponremove')->name('coupon.r
 Route::get('product/details/{id}', 'Front\ProductController@product')->name('product');
 Route::post('product/cart/add', 'Front\ProductController@addCart')->name('product.add.cart');
 Route::get('cart/product/view/{id}', 'Front\ProductController@view')->name('product.view.cart');
-///////shop/////////
+///////shop/////////////
+Route::post('product/search', 'Front\ProductController@search')->name('product.search');
 Route::get('product/subcategory/{id}', 'Front\ProductController@subcategory')->name('product.subcategory');
 Route::get('product/category/{id}', 'Front\ProductController@category')->name('product.category');
 Route::get('product/brand/{id}', 'Front\ProductController@brand')->name('product.brand');
@@ -54,7 +59,7 @@ Route::get('product/brand/{id}', 'Front\ProductController@brand')->name('product
 
 
  //////////////////////payment//////////////////
-Route::get('payment/index', 'Front\PaymentController@payment')->name('payment.step');
+Route::get('payment', 'Front\PaymentController@payment')->name('payment.step');
 Route::post('payment/process', 'Front\PaymentController@PaymentProcess')->name('payment.process');
 Route::post('payment/stripe', 'Front\PaymentController@stripe')->name('stripe.charge');
 
@@ -70,4 +75,8 @@ Route::get('return/order/{id}', 'Front\FrontController@returnOrder')->name('retu
 
 route::get('contact','Front\FrontController@contact')->name('contact');
 route::post('contact','Front\FrontController@contactSend')->name('contact.send');
+//
+
+
+
 

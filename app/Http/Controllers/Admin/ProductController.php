@@ -38,12 +38,15 @@ class ProductController extends Controller
 
 
     public function store(Request $request){
+        $path = $request->video;
+        $url=str_replace('watch?v=','embed/',$path );
         Product::saveImages($request);
         Product::create([
                     'image_one' => date("m.d.y").$request->file('image_one')->getClientOriginalName(),
                     'image_two' => date("j, n, Y").$request->file('image_two')->getClientOriginalName(),
-                    'image_three' => date("Ymd").$request->file('image_three')->getClientOriginalName(),
-                     ]+ $request->all());
+                     'image_three' => date("Ymd").$request->file('image_three')->getClientOriginalName(),
+                      'video' =>$url,
+                       ]+ $request->all());
 
         return redirect()->route('admin.product.all')->with(['message'=>'Product Inserted Successfully','alert-type'=>'success']);
 
@@ -77,6 +80,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+
+
         $categories=Category::all();
         $brands=Brand::all();
         $subcategories=Subcategory::all();
@@ -88,6 +93,9 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $path = $request->video;
+        $url=str_replace('watch?v=','embed/',$path );
+
 
         $product= Product::findOrFail($id);
 
@@ -138,6 +146,7 @@ class ProductController extends Controller
                 'image_one' =>  $image_one_database,
                 'image_two' =>  $image_two_database,
                 'image_three' =>$image_three_database,
+                'video' =>$url,
             ]+ $request->all());
 
         return redirect()->route('admin.product.all')
@@ -150,17 +159,24 @@ class ProductController extends Controller
         public function destroy(Request $request){
         $product= Product::findOrFail($request->id);
 
-
-        if (file_exists('public/media/product/'.$product->image_one)){
-            unlink('public/media/product/'.$product->image_one);
-        }
-        if (file_exists('public/media/product/'.$product->image_two)){
-            unlink('public/media/product/'.$product->image_two);
-        }
-        if (file_exists('public/media/product/'.$product->image_three)){
-            unlink('public/media/product/'.$product->image_three);
+        if ($product->image_one){
+            if (file_exists('public/media/product/'.$product->image_one)){
+                unlink('public/media/product/'.$product->image_one);
+            }
         }
 
+
+            if ($product->image_two) {
+                if (file_exists('public/media/product/' . $product->image_two)) {
+                    unlink('public/media/product/' . $product->image_two);
+                }
+            }
+
+            if ($product->image_three) {
+                if (file_exists('public/media/product/' . $product->image_three)) {
+                    unlink('public/media/product/' . $product->image_three);
+                }
+            }
 
      $product->delete();
         return response()->json(['message'=>'Product Deleted Successfully','status'=>true],200);

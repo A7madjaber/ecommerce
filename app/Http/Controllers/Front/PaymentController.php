@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Mail\InvoiceMail;
+use App\Model\Admin\Product;
 use App\Order;
 use App\OrderDetials;
 use App\Shipping;
@@ -58,7 +59,7 @@ class PaymentController extends Controller
 
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
-
+//
         $user=Auth::user();
         $total=$request->total;
         $subtotal=Session::has('coupon') ? Session::get('coupon')['balance'] : Cart::Subtotal();
@@ -108,10 +109,14 @@ class PaymentController extends Controller
 
         foreach (Cart::content() as $row){
 
-            OrderDetials::create([
+
+            $product=Product::where('id',$row->id)->first();
+            $qty=$product->buyone_getone== 0 ? $row->qty :$row->qty*2;
+
+            echo  OrderDetials::create([
                 'order_id'=>$order->id,
                 'product_id'=>$row->id,
-                'quantity'=>$row->qty,
+                'quantity'=>$qty,
                 'product_name'=>$row->name,
                 'size'=>$row->options->size,
                 'color'=>$row->options->color,

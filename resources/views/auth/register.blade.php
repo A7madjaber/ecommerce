@@ -1,11 +1,13 @@
-@extends('front.index')
+@extends('front.index',['title'=>'Register'])
 
 @section('content')
-    <hr>
+    @include('front.layouts.mnu')
+    <br>
+    <br>
     <div class="contact_form" >
         <div class="container">
 
-            <div class="row d-flex justify-content-center ">
+            <div class="row d-flex justify-content-center ml-5">
                 <div class="col-lg-4 box-shadow" style="border: 1px solid #fafafa; padding: 20px; border-radius: 10px; width: 90%">
                     <div class="contact_form_container ">
                         <div class="title text-center "><h3 class="font-weight-light ">Register</h3></div>

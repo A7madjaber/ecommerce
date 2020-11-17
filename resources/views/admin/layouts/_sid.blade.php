@@ -8,7 +8,7 @@
     <div class="sl-sideleft-menu">
         <a href="{{route('admin.home')}}" class="sl-menu-link active">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+                <i class="menu-item-icon icon fa fa-home tx-20"></i>
                 <span class="menu-item-label">Dashboard</span>
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
@@ -16,7 +16,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-grid tx-20"></i>
+                <i class="menu-item-icon fa fa-sitemap tx-20"></i>
                 <span class="menu-item-label">Category</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -29,19 +29,21 @@
         </ul>
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon icon ion-star tx-24"></i>
+                <i class="menu-item-icon fa fa-percent tx-20"></i>
                 <span class="menu-item-label">Coupons</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="{{route('admin.coupon.all') }}" class="nav-link">Coupons</a></li>
+            <li class="nav-item"><a href="{{route('admin.coupon.newsletters')}}" class="nav-link">Newsletters</a></li>
+
 
         </ul>
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-navicon-round tx-20"></i>
+                <i class="menu-item-icon icon fa fa-th-list tx-20"></i>
                 <span class="menu-item-label">Products</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -53,9 +55,27 @@
 
 
 
+
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon fa fa-tag tx-20"></i>
+                <span class="menu-item-label">Deals</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{route('admin.deal.all')}}" class="nav-link">All Deals</a></li>
+            <li class="nav-item"><a href="{{route('admin.deal.new')}}" class="nav-link">New Deal</a></li>
+        </ul>
+
+
+
+
+
+
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item" >
-                <i class="menu-item-icon ion-clipboard tx-20"></i>
+                <i class="menu-item-icon fa fa-clipboard tx-20"></i>
                 <span class="menu-item-label">Orders</span>
                 <span  class="badge badge-warning mr-2" title="Return Requests">{{count(\App\Order::where('return_order',1)->get())}}</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
@@ -77,7 +97,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
+                <i class="menu-item-icon fa fa-rss tx-20"></i>
                 <span class="menu-item-label">Blog</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -90,7 +110,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-filing tx-20"></i>
+                <i class="menu-item-icon fa fa-file tx-20"></i>
                 <span class="menu-item-label">Reports</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -106,7 +126,7 @@
 
         <a href="{{route('admin.message.all')}}" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-android-mail "></i>
+                <i class="menu-item-icon fa fa-envelope tx-20 "></i>
 
                 <span class="menu-item-label">Messages</span>
                 <span  class="badge badge-warning mr-2" title="Return Requests">{{count(\App\Contact::where('read_id',0)->get())}}</span>
@@ -123,13 +143,12 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon icon ion-settings"></i>
+                <i class="menu-item-icon fa fa-cog tx-20"></i>
                 <span class="menu-item-label">Settings</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-            <li class="nav-item"><a href="{{route('admin.coupon.newsletters')}}" class="nav-link">Newsletters</a></li>
             <li class="nav-item"><a href="{{route('admin.seo.seo')}}" class="nav-link">SEO Setting</a></li>
             <li class="nav-item"><a href="{{route('admin.settings.settings')}}" class="nav-link">Site Setting</a></li>
         </ul>

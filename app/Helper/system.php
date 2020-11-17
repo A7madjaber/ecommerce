@@ -3,6 +3,8 @@
 use App\Model\Admin\Category;
 use App\Model\Admin\product;
 use App\Model\Admin\Brand;
+use App\Model\Admin\HotDeal;
+
 use App\Settings;
 
 function categories(){
@@ -28,7 +30,13 @@ function AllProducts(){
 }
 
 function HotDeal(){
-   return  Product::orderBy('created_at','DESC')->wherestatus(1)->wherehot_deal(1)->take(3)->get();
+
+    $date=Carbon\Carbon::now();
+
+
+    return HotDeal::where('date','>',$date)->with(['product'],function ($query){
+        return $query->wherestatus(1);
+    })->OrderBy('date','ASC')->get();
 
 }
 

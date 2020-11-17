@@ -145,4 +145,38 @@ class ProductController extends Controller
 
     }
 
+    public function search(Request $request){
+
+
+        $products=Product::where('name','LIKE',"%$request->product%")->paginate(10);
+
+
+
+        $brands=[];
+        foreach ($products as $pro) {
+            $brands[] = Brand::all()
+                ->where('id', $pro->brand_id)->first();
+        }
+
+        $categories=[];
+        foreach ($products as $pro) {
+            $categories[] = Category::all()
+                ->where('id', $pro->category_id)->first();
+        }
+
+
+         $subcategories=[];
+        foreach ($products as $pro) {
+            $subcategories[] = Subcategory::all()
+                ->where('id', $pro->sub_category_id)->first();
+        }
+
+        $subcategories = array_unique($subcategories);
+        $categories = array_unique($categories);
+         $brands = array_unique($brands);
+
+        $search=$request->product;
+        return view('front.shop.search',compact('products','subcategories','categories','brands','search'));
+    }
+
 }

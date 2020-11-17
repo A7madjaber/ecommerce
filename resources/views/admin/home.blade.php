@@ -2,11 +2,12 @@
 
 @section('content')
 @php
-    $today=\App\Order::where('date',date('d-m-y'))->sum('total');
+    $today=\App\Order::where('date',date('d-m-y'))->get();
     $month=\App\Order::where('month',date('F'))->sum('total');
     $year=\App\Order::where('year',date('Y'))->sum('total');
-    $orderDelivery=\App\Order::where('status',3)->sum('total');
-    $orderReturn=\App\Order::where('return_order',2)->sum('total');
+    $orderDelivery=\App\Order::where('status',3)->get();
+    $orderReturn=\App\Order::where('return_order',2)->get();
+    $orderReturn=\App\Order::where('return_order',2)->get();
     $products=\App\Model\Admin\Product::all()->count();
     $brands=\App\Model\Admin\Brand::all()->count();
     $users=\App\User::all()->count();
@@ -37,7 +38,7 @@
                         </div><!-- card-header -->
                         <div class="d-flex align-items-center justify-content-between">
                             <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                            <h3 class="mg-b-0 tx-white tx-lato tx-bold">{{$today}}</h3>
+                            <h3 class="mg-b-0 tx-white tx-lato tx-bold">{{count($today)}}</h3>
                         </div><!-- card-body -->
 
 
@@ -78,7 +79,7 @@
                         </div><!-- card-header -->
                         <div class="d-flex align-items-center justify-content-between">
                             <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                            <h3 class="mg-b-0 tx-white tx-lato tx-bold">{{$orderDelivery}}</h3>
+                            <h3 class="mg-b-0 tx-white tx-lato tx-bold">{{count($orderDelivery)}}</h3>
                         </div><!-- card-body -->
 
                     </div><!-- card -->
@@ -98,7 +99,7 @@
                         </div><!-- card-header -->
                         <div class="d-flex align-items-center justify-content-between">
                             <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                            <h3 class="mg-b-0 tx-white tx-lato tx-bold">{{$orderReturn}}</h3>
+                            <h3 class="mg-b-0 tx-white tx-lato tx-bold">{{count($orderReturn)}}</h3>
                         </div><!-- card-body -->
 
 

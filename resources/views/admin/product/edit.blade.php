@@ -15,7 +15,7 @@
 
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">EDIT Product
-                    <a href="{{route('admin.product.all')}}" class="btn btn-secondary btn-sm pull-right"> All Products</a>
+                    <a href="{{route('admin.product.all')}}" class="btn btn-warning btn-sm pull-right"> All Products</a>
                 </h6>
                 <p class="mg-b-20 mg-sm-b-30">Add New Product Form</p>
 

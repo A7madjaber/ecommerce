@@ -68,23 +68,13 @@
 
                                     @foreach( brands() as $brand)
 
-                                        <li><a href="#">{{$brand->brand_name}}<i class="fas fa-chevron-down"></i></a></li>
+                                        <li><a href="{{route('product.brand',$brand->id)}}">{{$brand->brand_name}}<i class="fas fa-chevron-down"></i></a></li>
                                     @endforeach
 
                                 </ul>
                             </li>
-                            <li class="hassubs">
-                                <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{route('blog.posts')}}">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{route('contact')}}">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                </ul>
-                            </li>
+
+
                             <li><a href="{{route('blog.posts')}}">Blog<i class="fas fa-chevron-down"></i></a></li>
                             <li><a href="{{route('contact')}}">Contact<i class="fas fa-chevron-down"></i></a></li>
                         </ul>

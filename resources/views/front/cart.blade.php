@@ -94,9 +94,10 @@
                                                 <div class="cart_item_title">Price</div>
                                                 <div class="cart_item_text">{{ $row->price }}</div>
                                             </div>
-                                            <div class="cart_item_total cart_info_col">
+
+                                            <div class="cart_item_total cart_info_col qyt">
                                                 <div class="cart_item_title">Total</div>
-                                                <div class="cart_item_text">{{ $row->price*$row->qty }}</div>
+                                                <div class="cart_item_text" >{{ $row->price*$row->qty }}</div>
                                             </div>
 
                                             <div class="cart_item_total cart_info_col">
@@ -287,6 +288,10 @@
 
                         $(".cart").load(location.href + " .cart");
                   $("#order_total_amount").load(location.href + " #order_total_amount");
+
+                        $(".qyt").load(location.href + " .qyt");
+
+
 
                     }
 

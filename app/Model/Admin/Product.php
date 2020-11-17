@@ -18,7 +18,7 @@ class Product extends Model
 
     protected $fillable=[
         'category_id', 'sub_category_id', 'quantity', 'brand_id','name', 'details',
-        'product_code', 'color','size','price','discount_price', 'video','main_slider','hot_deal','hot_new',
+        'product_code', 'color','size','price','discount_price', 'video','main_slider','hot_new',
         'best_rated','mid_slider', 'trend','image_one','image_two', 'image_three', 'status','buyone_getone'
     ];
 
@@ -68,7 +68,9 @@ class Product extends Model
         return $this->hasMany(OrderDetials::class);
     }
 
-
+    public function hotDeal(){
+        return $this->hasOne(HotDeal::class);
+    }
 }
 
 

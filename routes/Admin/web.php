@@ -64,7 +64,8 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
         Route::post('{id}', 'CouponController@update')->name('update');
         Route::post('delete/id', 'CouponController@destroy')->name('delete');
         Route::get('newsletters/all', 'CouponController@newsletters')->name('newsletters');
-        Route::post('newsletters/delete/id', 'CouponController@deleteNewsletters')->name('delete.newsletters');
+        Route::post('newsletters/delete', 'CouponController@deleteNewsletters')->name('delete.newsletters');
+        Route::get('coupon/{id}', 'CouponController@sendCoupon')->name('sendCoupon');
 
     });
 
@@ -75,7 +76,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
 
         Route::get('all', 'ProductController@product')->name('all');
         Route::get('create', 'ProductController@create')->name('create');
-        Route::get('get/sub-categories/{category_id}', 'ProductController@getsubcategories')->name('get-subcategories');
+        Route::get('get/sub-categories/{category_id}', 'ProductController@getsubcategories')->name('get-subcategories'); /////get subcategories
         Route::post('store', 'ProductController@store')->name('store');
         Route::post('status/status', 'ProductController@status')->name('status');
         Route::get('product/{id}', 'ProductController@show')->name('show');
@@ -169,5 +170,22 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
 
 
     });
+
+    Route::group(['as'=>'deal.','prefix'=>'deal'],function (){
+        Route::get('all', 'HotDealController@all')->name('all');
+        Route::get('new', 'HotDealController@create')->name('new');
+        Route::get('get/product/{product_id}', 'HotDealController@getproduct')->name('getProduct'); /////get subcategories
+        Route::post('store', 'HotDealController@store')->name('store');
+        Route::get('{id}', 'HotDealController@edit')->name('edit');
+        Route::post('{id}', 'HotDealController@update')->name('update');
+        Route::post('delete/id', 'HotDealController@destroy')->name('delete');
+
+//        Route::get('message/{id}', 'MessageController@show')->name('show');
+//        Route::post('replay', 'MessageController@replay')->name('replay');
+
+    });
+
+
+
 });
 

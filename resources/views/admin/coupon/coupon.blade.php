@@ -43,6 +43,7 @@
                                 <td>
                                     <a href="{{route('admin.coupon.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
                                     <a href="" id="delete" route="{{route('admin.coupon.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                    <a href="{{route('admin.coupon.sendCoupon',$row->id)}}" title="Send message to Subscribers" class="btn btn-sm btn-success"><i class="fa fa-send"></i> </a>
                                 </td>
 
                             </tr>

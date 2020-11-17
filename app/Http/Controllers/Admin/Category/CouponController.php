@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Category;
+use App\Mail\CouponMail;
 use App\Model\Admin\Coupon;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\NewsLetter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CouponController extends Controller
 {
@@ -15,6 +17,7 @@ class CouponController extends Controller
 
 
     public function coupon(){
+
   	$coupon = Coupon::all();
   	return view('admin.Coupon.coupon',compact('coupon'));
   }
@@ -25,7 +28,8 @@ class CouponController extends Controller
           'coupon' => 'required|unique:coupons|max:55',
           'discount' => 'required',
       ]);
-      Coupon::create($request->all());
+      $coupon= Coupon::create($request->all());
+
       return Redirect()->back()->with(['message'=>'Coupon Inserted Successfully','alert-type'=>'success']);
      }
 
@@ -69,5 +73,16 @@ class CouponController extends Controller
     {
         NewsLetter::findOrFail($request->id)->delete();
         return response()->json(['message'=>'Subscriber Deleted Successfully','status'=>true],200);
+    }
+
+    public function sendCoupon($id){
+         $coupon=Coupon::findOrFail($id);
+
+        $mails= NewsLetter::select('email')->get();
+        foreach ( $mails as $email) {
+            Mail::to($email)->send(new CouponMail($coupon));
+        }
+        return Redirect()->back()
+            ->with(['message' => 'Coupon Send Successfully', 'alert-type' => 'success']);
     }
 }

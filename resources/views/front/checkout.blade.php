@@ -61,16 +61,8 @@
                                             <div class="cart_item_quantity cart_info_col">
                                                 <div class="cart_item_title">Quantity</div><br>
 
-                                                <input class="form-control d-inline-flex qyt-val{{$row->rowId}}"
-                                                       type="number" name="qty" value="{{ $row->qty }}"
-                                                       style="width: 75px;">
+                                                <label class="form-control d-inline-flex qyt-val{{$row->rowId}}"style="width: 75px;">{{ $row->qty }}</label>
 
-                                                <button route="{{route('qty.update')}}"
-                                                        row_id="{{$row->rowId}}"
-                                                        type="submit" id="updateqty"
-                                                        value="" class="btn btn-success">
-                                                    <i class="fas fa-check-square"></i>
-                                                </button>
                                             </div>
 
                                             <div class="cart_item_price cart_info_col">
@@ -240,80 +232,6 @@
 
         </script>
 
-
-        {{--    update quantity --}}
-        <script>
-
-            $(document).on('click','#updateqty',function(e) {
-
-
-
-                e.preventDefault();
-
-                var id =  $(this).attr('row_id');
-                var route =  $(this).attr('route');
-                var qyt =  $('.qyt-val'+id).val();
-
-
-                $.ajax({
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        'id' :id,
-                        'qty':qyt,
-                    },
-
-                    url: route,
-                    type: "GET",
-                    dataType: "JSON",
-
-
-                    success : function(data)
-                    {
-
-
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        });
-
-
-
-                        if ($.isEmptyObject(data.error)) {
-
-
-                            Toast.fire({
-
-                                icon: data.icon,
-                                title: data.message,
-                            });
-
-                            $(".cart").load(location.href + " .cart");
-                            $("#cart").load(location.href + " #cart");
-                            $("#row").load(location.href + " #row")
-
-
-                        }
-
-                    },
-
-                })
-
-
-            });
-
-
-
-
-
-
-        </script>
 
 
 {{--        submit coupon--}}
