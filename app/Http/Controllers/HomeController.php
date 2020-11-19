@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,49 @@ class HomeController extends Controller
     {
         return view('profile.home');
     }
+
+    public function profileEdit()
+    {
+        return view('profile.edit');
+    }
+
+    public function profileUpdate(Request $request)
+
+    {
+
+         $user=auth()->user();
+
+
+        if($request->avatar) {
+            if ($user->avatar){
+                if (file_exists('public/media/user/' . $user->avatar)) {
+                    unlink('public/media/user/' . $user->avatar);
+                }
+            }
+            $avatar = Image::make($request->avatar);
+            $avatar->save('public/media/user/'.date("j, n, Y").
+                $request->file('avatar')->getClientOriginalName());
+            $avatar_database=date("j, n, Y").$request->file('avatar')->getClientOriginalName();
+        }else{
+            $avatar_database=$request->old_avatar;
+        }
+
+        $request->validate([
+
+            'email' => 'required|email|max:255|unique:users,email,'.$user->id,
+            'phone' => 'required|numeric'
+        ]);
+
+        $user->update([
+
+                'avatar' =>$avatar_database,
+            ]+ $request->all());
+
+        return redirect()->back()
+            ->with(['message'=>' Updated Successfully','alert-type'=>'success']);
+    }
+
+
 
     public function changePassword(){
         return view('auth.changepassword');

@@ -27,9 +27,6 @@
 
 @include('admin.layouts._header')
 
-<!-- ########## START: RIGHT PANEL ########## -->
-
-@include('admin.layouts._right')
 
 <!-- ########## START: MAIN PANEL ########## -->
 

@@ -34,7 +34,7 @@
                             <div class="col-lg-3">
                                 <div class="form-group mg-b-10-force">
                                     <label for="exampleInputEmail1">Expired Date</label>
-                                    <input type="date" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" name="date">
+                                    <input type="datetime-local" class="form-control" required id="exampleInputEmail1t" aria-describedby="emailHelp" name="date">
 
                                 </div>
                             </div><!-- modal-body -->

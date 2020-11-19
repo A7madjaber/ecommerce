@@ -134,6 +134,7 @@ class ProductController extends Controller
             if (file_exists('public/media/product/'.$product->image_three)){
                 unlink('public/media/product/'.$product->image_three);
             }
+
             $ImageThree = Image::make($request->image_three);
             $ImageThree->save('public/media/product/'.date("j, n, Y").
                 $request->file('image_three')->getClientOriginalName());

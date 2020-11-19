@@ -268,7 +268,7 @@
                                                 </div>
 
                                                 <div class="deals_info_line d-flex flex-row justify-content-start">
-                                                    <div class="deals_item_name">{{$product->product->name}}</div>
+                                                    <div class="deals_item_name"><a href="{{route('product',$product->product->id)}}">{{$product->product->name}}</a> </div>
 
 
                                                     @if($product->product->discount_price==null)
@@ -277,7 +277,7 @@
                                                     @endif
 
                                                     @if($product->product->discount_price!=null)
-                                                        <div class="deals_item_price ml-auto">{{$product->productdiscount_price}}</div>
+                                                        <div class="deals_item_price ml-auto">{{$product->product->discount_price}}</div>
                                                     @else
                                                     @endif
 
@@ -286,7 +286,7 @@
                                                     <div class="available_line d-flex flex-row justify-content-start">
                                                         <div class="available_title">Available: <span>{{$product->product->quantity}}</span></div>
                                                     </div>
-                                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                                    <div class="available_bar"><span style="width:{{$product->product->quantity*0.5}}%"></span></div>
                                                 </div>
                                                 <div class="deals_timer d-flex flex-row align-items-center justify-content-start">
                                                     <div class="deals_timer_title_container">

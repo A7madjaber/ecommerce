@@ -5,17 +5,19 @@ Route::get('/', function () {
     return view('front.home');
 })->name('home');
 
-Route::get('login/{provider}', 'GoogleLoginController@redirect');
+Route::get('login/{provider}', 'SocialLoginController@redirect');
 
-Route::get('{provider}/callback','GoogleLoginController@Callback');
+Route::get('{provider}/callback','SocialLoginController@Callback');
 
 
 //auth & user
 Auth::routes(['verify'=>true]);
-Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
-Route::post('/password-update', 'HomeController@updatePassword')->name('password.update');
-Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
-Route::get('/profile','HomeController@index')->name('profile');
+Route::get('password-change', 'HomeController@changePassword')->name('password.change');
+Route::post('password-update', 'HomeController@updatePassword')->name('password.update');
+Route::get('user/logout', 'HomeController@Logout')->name('user.logout');
+Route::get('profile','HomeController@index')->name('profile');
+Route::get('profile/edit','HomeController@profileEdit')->name('edit.profile');
+Route::post('profile/edit','HomeController@profileUpdate')->name('edit.profile');
 
 //Blog
 /////////////////////////////////////////////////////

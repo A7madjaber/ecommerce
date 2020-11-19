@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Laravel\Socialite\Facades\Socialite;
 
-class GoogleLoginController extends Controller
+class SocialLoginController extends Controller
 {
 
     public function redirect($provider)
@@ -31,12 +31,14 @@ class GoogleLoginController extends Controller
         $user = User::where('provider_id', $getInfo->id)->first();
 
         if (!$user) {
+
+
             $user = User::create([
                 'name'     => $getInfo->name,
                 'email'    => $getInfo->email,
                 'provider' => $provider,
                 'provider_id' => $getInfo->id,
-                'avatar' => $getInfo->avatar
+
             ]);
         }
         return $user;

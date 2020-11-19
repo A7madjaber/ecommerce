@@ -31,7 +31,7 @@
                             <div class="col-lg-3">
                                 <div class="form-group mg-b-10-force">
                                     <label for="exampleInputEmail1">Expired Date</label>
-                                    <input type="date" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$deal->date}}" name="date">
+                                    <input type="datetime-local" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$deal->date}}" name="date">
 
                                 </div>
                             </div><!-- modal-body -->
@@ -81,7 +81,7 @@
 
 
                         <div class="form-layout-footer">
-                            <button class="btn btn-primary mg-r-5 pull-right">Create Deal</button>
+                            <button class="btn btn-primary mg-r-5 pull-right">Update Deal</button>
                         </div><!-- form-layout-footer -->
                     </div><!-- form-layout -->
 
