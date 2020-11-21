@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Front;
 use App\Contact;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\NewsLetter;
+use App\Model\Admin\Product;
 use App\Model\Admin\Subcategory;
 use App\Model\Blog\BlogPost;
 use App\Order;
+use App\Rating;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +95,24 @@ public function returnOrderList(){
         Contact::create($request->all());
        return Redirect()->route('homes')->with(['message' => 'Your  Message Send Successfully', 'alert-type' => 'success']);
     }
+
+
+
+    public function rating(Request $request)
+    {
+
+       $product= Product::findOrFail($request->id);
+
+        $product_id = $product->id;
+
+        $rating_count = $request->val;
+
+        $user_ip = $request->ip();
+
+        Rating::firstOrCreate(['product_id'=>$product_id, 'ip'=>$user_ip], ['rating_count'=>$rating_count]);
+         return response()->json(['message'=>'Thank Your For Rating','icon'=>'success']);
+    }
+
 }
 
 

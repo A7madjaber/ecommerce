@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('front/styles/bootstrap4/bootstrap.min.css')}}">
 <link rel="icon" href="{{asset('public/media/logo/'.Settings()->logo)}}" type="image/gif" >
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{{asset('front/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{asset('front/plugins/OwlCarousel2-2.2.1/owl.carousel.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('front/plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
@@ -21,6 +21,8 @@
         -webkit-box-shadow: 0px 10px 20px 0px rgba(50, 50, 50, 0.52);
         -moz-box-shadow:    0px 10px 20px 0px rgba(50, 50, 50, 0.52);
         box-shadow:         0px 10px 20px 0px rgba(50, 50, 50, 0.52)
-    }    </style>
+    }
+
+</style>
 
 @stack('front-css')

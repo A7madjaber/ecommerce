@@ -78,7 +78,16 @@ function Settings(){
 
 
 
-//function BestRated(){
-//   return  Product::orderBy('created_at','DESC')->wherestatus(1)->wherebest_rated(1)->get();
-//
-//}
+function RecentlyViewed(){
+   return  Product::orderBy('created_at','DESC')->wherestatus(1)->get()->random(12);
+
+}
+
+
+function TopRating(){
+   return  Product::orderBy('created_at','DESC')->wherestatus(1)->wherehas('ratings')->with(['ratings'], function ($query) {
+        return $query->orderBy('rating_count')->get();
+    })->take(5)->get();
+
+}
+

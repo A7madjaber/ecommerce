@@ -3,17 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4f2695c9-f4f6-43bd-bda0-ce5b6b649999" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoogleLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SocialLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/deals/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/deals/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/deals/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/deals/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/deals/view.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/_header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/_right.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helper/system.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helper/system.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Front/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/FrontController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Front/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Front/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Admin/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Admin/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/front/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/layouts/_css.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layouts/_css.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/layouts/_js.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/layouts/_js.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/product-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/product-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -182,19 +179,19 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laragon2\www\ecommerce\app\Model\Admin" />
-      <recent name="C:\laragon2\www\ecommerce\app\Model" />
-      <recent name="C:\laragon2\www\ecommerce\resources\views\profile" />
-      <recent name="C:\laragon2\www\ecommerce\resources\views\front\shop" />
-      <recent name="C:\laragon2\www\ecommerce\app\Http\Controllers" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon2\www\ecommerce\resources\views\profile" />
       <recent name="C:\laragon2\www\ecommerce\resources\views\admin" />
       <recent name="C:\laragon2\www\ecommerce\resources\views\Mail" />
       <recent name="C:\laragon2\www\ecommerce\resources\views\front\shop" />
       <recent name="C:\laragon2\www\ecommerce\resources\views\admin\message" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon2\www\ecommerce\app\Model\Admin" />
+      <recent name="C:\laragon2\www\ecommerce\app\Model" />
+      <recent name="C:\laragon2\www\ecommerce\resources\views\profile" />
+      <recent name="C:\laragon2\www\ecommerce\resources\views\front\shop" />
+      <recent name="C:\laragon2\www\ecommerce\app\Http\Controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -263,7 +260,8 @@
       <workItem from="1605206425948" duration="10226000" />
       <workItem from="1605520718811" duration="12098000" />
       <workItem from="1605612884117" duration="12186000" />
-      <workItem from="1605776410962" duration="9693000" />
+      <workItem from="1605776410962" duration="10541000" />
+      <workItem from="1605954082049" duration="22038000" />
     </task>
     <servers />
   </component>

@@ -16,8 +16,13 @@ class ProductController extends Controller
     {
 
         $product = Product::findOrFail($id);
+        if (count($product->ratings)>0) {
+            $avg = $product->ratings()->avg('rating_count');
+        }else{
+            $avg=0;
+        }
 
-        return view('front.product-details', compact('product'));
+        return view('front.product-details', compact('product','avg'));
 
     }
 

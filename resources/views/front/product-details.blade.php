@@ -1,9 +1,64 @@
-
 @extends('front.index',['title'=>$product->name])
 
 @section('content')
 
     @push('front-css')
+        <style>
+            .txt-center {
+                text-align: center;
+            }
+            .hide {
+                display: none;
+            }
+
+            .clear {
+                float: none;
+                clear: both;
+            }
+
+            .rating {
+                width: 90px;
+                unicode-bidi: bidi-override;
+                direction: rtl;
+                text-align: center;
+                position: relative;
+            }
+
+            .rating > label {
+                float: right;
+                font-size: 15px;
+                display: inline;
+                padding: 0;
+                margin: 0;
+                position: relative;
+                width: 1.1em;
+                cursor: pointer;
+                color: #000;
+            }
+
+            .rating > label:hover,
+            .rating > label:hover ~ label,
+            .rating > input.radio-btn:checked ~ label {
+                color: transparent;
+            }
+
+            .rating > label:hover:before,
+            .rating > label:hover ~ label:before,
+            .rating > input.radio-btn:checked ~ label:before,
+            .rating > input.radio-btn:checked ~ label:before {
+                content: "\2605";
+                position: absolute;
+                left: 0;
+                color: #FFD700;
+            }
+
+
+            .modal-backdrop {
+                /* bug fix - no overlay */
+                display: none;
+            }
+        </style>
+
 
         <link rel="stylesheet" type="text/css" href="{{asset('front/styles/product_styles.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('front/styles/product_responsive.css')}}">
@@ -39,14 +94,38 @@
                             {{@$product->subcategory->subcategory_name}}
                         </div>
                         <div class="product_name">{{$product->name}}</div>
-                        <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                        @if($avg<=1.9)
+
+                            <div class="rating_r rating_r_1 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                        @elseif($avg<=2.9)
+                            <div class="rating_r rating_r_2 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                        @elseif($avg<=3.9)
+                            <div class="rating_r rating_r_3 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                        @elseif($avg<=4.9)
+                            <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                        @elseif($avg>=5)
+                            <div class="rating_r rating_r_5 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                        @else
+                            <div class="rating_r rating_r_0 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                        @endif
+<br>
+                    <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-star"></i> Add Rating </button>
+
+
+
                         <div class="product_text"><p>{!! str_limit( $product->details ,500)!!}</p></div>
                         <div class="order_info d-flex flex-row">
                             <form action="{{route('product.add.cart')}}" method="post">
-                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
                                 @csrf
                                 @if($product->color == NULL)
-
                                 @else
                                 <div class="clearfix" style="z-index: 1000;">
                                     <div class="row">
@@ -200,13 +279,112 @@
     </div>
 
 
+    <!-- Modal -->
+    <div class="modal fade" style="margin: 200px" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background:gainsboro">
+                    <h5 class="modal-title" id="exampleModalLabel">Rating Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                     <div class="rating" style="margin:15px;font-size: 100px">
+                            <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                       <label for="star5"> ☆</label>
+                            <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                         <label for="star4">  ☆ </label>
+                            <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                         <label for="star3">  ☆ </label>
+                            <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                         <label for="star2">  ☆ </label>
+                            <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                         <label for="star1"> ☆</label>
+                        </div>
+
+                        <button type="button"  class="btn btn-secondary btn-sm float_right ml-1" data-dismiss="modal">Close</button>
+                        <a href="#"  id="rating"  model_id="{{$product->id}} "route="{{route('rating')}}" class="btn btn-primary btn-sm float_right">Submit</a>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
 @push('front-js')
+
+    <script>
+
+        $(document).on("click", "#rating", function(e){
+            e.preventDefault();
+            var model_id =  $(this).attr('model_id');
+            var route =  $(this).attr('route');
+            const val = $('input[name=star]:checked').val();
+
+
+            $.ajax({
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    'id' :model_id,
+                    'val':val
+
+                },
+                url: route,
+                type: "GET",
+                dataType: "JSON",
+
+
+                success : function(data)
+                {
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
+
+
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+
+                            icon: data.icon,
+                            title: data.message,
+                        });
+
+                    }else{
+                        Toast.fire({
+                            icon: data.icon,
+                            title: data.message
+                        })
+                    }
+                },
+
+
+            })
+
+        });
+    </script>
+
+
 
     <script src="{{asset('front/plugins/easing/easing.js')}}"></script>
     <script src="{{asset('front/js/product_custom.js')}}"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=323572825316171&autoLogAppEvents=1" nonce="9KvkcnaH"></script>
-
 
 @endpush
 @stop

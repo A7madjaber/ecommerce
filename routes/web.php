@@ -79,6 +79,6 @@ route::get('contact','Front\FrontController@contact')->name('contact');
 route::post('contact','Front\FrontController@contactSend')->name('contact.send');
 //
 
-
+route::get('rating','Front\FrontController@rating')->name('rating');
 
 

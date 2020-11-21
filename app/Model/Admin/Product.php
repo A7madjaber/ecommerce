@@ -3,6 +3,7 @@
 namespace App\Model\Admin;
 
 use App\OrderDetials;
+use App\Rating;
 use App\Whishlist;
 use Illuminate\Database\Eloquent\Model;
 use Intervention\Image\Facades\Image;
@@ -70,6 +71,11 @@ class Product extends Model
 
     public function hotDeal(){
         return $this->hasOne(HotDeal::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 }
 

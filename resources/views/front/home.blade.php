@@ -796,94 +796,52 @@
                         <div class="owl-carousel owl-theme reviews_slider">
 
                             <!-- Reviews Slider Item -->
-                            <div class="owl-item">
+
+                            @foreach(TopRating() as $pro)
+                           <div class="owl-item">
                                 <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="images/review_1.jpg" alt=""></div></div>
+                                    <div><div class="review_image"><img src="{{asset('public/media/product/'.$pro->image_one)}}" alt=""></div></div>
                                     <div class="review_content">
-                                        <div class="review_name">Roberto Sanchez</div>
+                                        <div class="review_name"><a href="{{route('product',$pro->id)}}">{{$pro->name}}</a> </div>
                                         <div class="review_rating_container">
-                                            <div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="review_time">2 day ago</div>
+
+
+
+
+                                            @if(count($pro->ratings) > 0)
+
+
+                                                @if($pro->ratings()->avg('rating_count')<=1.9)
+
+                                                    <div class="rating_r rating_r_1 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                                                        @elseif($pro->ratings()->avg('rating_count')<=2.9)
+                                                            <div class="rating_r rating_r_2 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                        @elseif($pro->ratings()->avg('rating_count')<=3.9)
+                                                            <div class="rating_r rating_r_3 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                                                        @elseif($pro->ratings()->avg('rating_count')<=4.9)
+                                                            <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                                                        @elseif($pro->ratings()->avg('rating_count')>=5)
+                                                            <div class="rating_r rating_r_5 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                        @else
+                                                    <div class="rating_r rating_r_0 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                                                @endif
+
+                                            @else
+                                                <div class="rating_r rating_r_0 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+
+                                            @endif
+
                                         </div>
-                                        <div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
+                                        <div class="review_text"><p>{!! str_limit( $pro->details ,80)!!}</p></div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Reviews Slider Item -->
-                            <div class="owl-item">
-                                <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="images/review_2.jpg" alt=""></div></div>
-                                    <div class="review_content">
-                                        <div class="review_name">Brandon Flowers</div>
-                                        <div class="review_rating_container">
-                                            <div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="review_time">2 day ago</div>
-                                        </div>
-                                        <div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
 
-                            <!-- Reviews Slider Item -->
-                            <div class="owl-item">
-                                <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="images/review_3.jpg" alt=""></div></div>
-                                    <div class="review_content">
-                                        <div class="review_name">Emilia Clarke</div>
-                                        <div class="review_rating_container">
-                                            <div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="review_time">2 day ago</div>
-                                        </div>
-                                        <div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Reviews Slider Item -->
-                            <div class="owl-item">
-                                <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="images/review_1.jpg" alt=""></div></div>
-                                    <div class="review_content">
-                                        <div class="review_name">Roberto Sanchez</div>
-                                        <div class="review_rating_container">
-                                            <div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="review_time">2 day ago</div>
-                                        </div>
-                                        <div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Reviews Slider Item -->
-                            <div class="owl-item">
-                                <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="images/review_2.jpg" alt=""></div></div>
-                                    <div class="review_content">
-                                        <div class="review_name">Brandon Flowers</div>
-                                        <div class="review_rating_container">
-                                            <div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="review_time">2 day ago</div>
-                                        </div>
-                                        <div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Reviews Slider Item -->
-                            <div class="owl-item">
-                                <div class="review d-flex flex-row align-items-start justify-content-start">
-                                    <div><div class="review_image"><img src="images/review_3.jpg" alt=""></div></div>
-                                    <div class="review_content">
-                                        <div class="review_name">Emilia Clarke</div>
-                                        <div class="review_rating_container">
-                                            <div class="rating_r rating_r_4 review_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="review_time">2 day ago</div>
-                                        </div>
-                                        <div class="review_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</p></div>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                         <div class="reviews_dots"></div>
@@ -910,98 +868,41 @@
                     <div class="viewed_slider_container">
 
                         <!-- Recently Viewed Slider -->
-
                         <div class="owl-carousel owl-theme viewed_slider">
-
+                        @foreach(RecentlyViewed() as $product)
                             <!-- Recently Viewed Item -->
-                            <div class="owl-item">
-                                <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_1.jpg" alt=""></div>
-                                    <div class="viewed_content text-center">
-                                        <div class="viewed_price">$225<span>$300</span></div>
-                                        <div class="viewed_name"><a href="#">Beoplay H7</a></div>
-                                    </div>
-                                    <ul class="item_marks">
-                                        <li class="item_mark item_discount">-25%</li>
-                                        <li class="item_mark item_new">new</li>
-                                    </ul>
-                                </div>
-                            </div>
+                                <div class="owl-item">
+                                    <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                        <div class="viewed_image">
+                                            <img src="{{asset('public/media/product/'.$product->image_one)}}" alt="">
+                                        </div>
+                                        <div class="trends_content">
+                                            <div class="trends_category"><a href="#">{{@$product->brand->brand_name}}</a></div>
+                                            <div class="trends_info clearfix">
+                                                <div class="trends_name"><a href="{{route('product',$product->id)}}">{{$product->name}}</a></div>
 
-                            <!-- Recently Viewed Item -->
-                            <div class="owl-item">
-                                <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_2.jpg" alt=""></div>
-                                    <div class="viewed_content text-center">
-                                        <div class="viewed_price">$379</div>
-                                        <div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
-                                    </div>
-                                    <ul class="item_marks">
-                                        <li class="item_mark item_discount">-25%</li>
-                                        <li class="item_mark item_new">new</li>
-                                    </ul>
-                                </div>
-                            </div>
 
-                            <!-- Recently Viewed Item -->
-                            <div class="owl-item">
-                                <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_3.jpg" alt=""></div>
-                                    <div class="viewed_content text-center">
-                                        <div class="viewed_price">$225</div>
-                                        <div class="viewed_name"><a href="#">Samsung J730F...</a></div>
-                                    </div>
-                                    <ul class="item_marks">
-                                        <li class="item_mark item_discount">-25%</li>
-                                        <li class="item_mark item_new">new</li>
-                                    </ul>
-                                </div>
-                            </div>
+                                                @if($product->discount_price == NULL)
+                                                    <div class="product_price discount">{{ $product->price }}<span> </div>
+                                                @else
+                                                    <div class="product_price discount">${{ $product->discount_price }}<span>${{ $product->price }}</span></div>
+                                                @endif
+                                            </div>
+                                        </div>
 
-                            <!-- Recently Viewed Item -->
-                            <div class="owl-item">
-                                <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_4.jpg" alt=""></div>
-                                    <div class="viewed_content text-center">
-                                        <div class="viewed_price">$379</div>
-                                        <div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
-                                    </div>
-                                    <ul class="item_marks">
-                                        <li class="item_mark item_discount">-25%</li>
-                                        <li class="item_mark item_new">new</li>
-                                    </ul>
-                                </div>
-                            </div>
+                                        <ul class="item_marks">
 
-                            <!-- Recently Viewed Item -->
-                            <div class="owl-item">
-                                <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_5.jpg" alt=""></div>
-                                    <div class="viewed_content text-center">
-                                        <div class="viewed_price">$225<span>$300</span></div>
-                                        <div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
+                                            @if($product->discount_price!=null)
+                                                <?php $amount= $product->price - $product->discount_price;
+                                                $discount=$amount/ $product->price *100;
+                                                ?>
+                                                <li class="item_mark item_discount">{{intval($discount)}}%</li>
+                                            @else
+                                                <li class="item_mark item_discount" style="background:#0e8ce4">New</li>                                            @endif
+                                        </ul>
                                     </div>
-                                    <ul class="item_marks">
-                                        <li class="item_mark item_discount">-25%</li>
-                                        <li class="item_mark item_new">new</li>
-                                    </ul>
                                 </div>
-                            </div>
-
-                            <!-- Recently Viewed Item -->
-                            <div class="owl-item">
-                                <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                    <div class="viewed_image"><img src="images/view_6.jpg" alt=""></div>
-                                    <div class="viewed_content text-center">
-                                        <div class="viewed_price">$375</div>
-                                        <div class="viewed_name"><a href="#">Speedlink...</a></div>
-                                    </div>
-                                    <ul class="item_marks">
-                                        <li class="item_mark item_discount">-25%</li>
-                                        <li class="item_mark item_new">new</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1121,6 +1022,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
