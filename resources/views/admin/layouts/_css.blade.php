@@ -16,4 +16,11 @@
 <link rel="stylesheet" href="{{asset('admin/css/starlight.css')}}">
 <link href="{{asset('admin/lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
 
+<style>
 
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+
+</style>

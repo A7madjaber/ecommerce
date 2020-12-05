@@ -11,10 +11,16 @@ class CategoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+
+        $this->middleware('permission:read_categories')->only(['index']);
+        $this->middleware('permission:create_categories')->only('store');
+        $this->middleware('permission:update_categories')->only(['edit','update']);
+        $this->middleware('permission:delete_categories')->only(['destroy']);
+
     }
 
 
-    public function category()
+    public function index()
     {
         $category = Category::all();
         return view('admin.category.category', compact('category'));

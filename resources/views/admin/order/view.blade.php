@@ -200,8 +200,10 @@
 
                         <div class="container m-2" id="shipping-status">
 
+                            @if(auth()->user()->hasPermission('update_order'))
 
-                        @if($order->status == 0)
+
+                            @if($order->status == 0)
                                 <button id="status" model_id="{{$order->id}}"  route="{{route('admin.order.accept',$order->id)}}" title="Acceptance Payment" class="btn btn-success">
                                     <div><i class="fa fa-check-circle"></i></div>
                                 </button>
@@ -231,7 +233,9 @@
 
                         @endif
 
+                                @endif
                         </div>
+
 
 
                     </div>

@@ -17,8 +17,20 @@
 
         <div class="card pd-20 pd-sm-40">
           <h6 class="card-body-title">Category List
-        <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+
+              @if(auth()->user()->hasPermission('create_categories'))
+
+              <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
             <i class="fa fa-plus"></i></a>
+
+                  @else
+
+                  <a href="#" class="disabled btn btn-sm btn-warning" style="float: right;">
+                      <i class="fa fa-plus"></i></a>
+
+
+              @endif
+
           </h6>
 
 
@@ -46,9 +58,24 @@
                     </td>
 
                     <td>
-                    <a href="{{route('admin.category.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                      <a href="" id="delete" route="{{route('admin.category.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
 
+                        @if(auth()->user()->hasPermission('update_categories'))
+                    <a href="{{route('admin.category.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+
+                      @else
+                            <a href="#"class="disabled btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+
+                        @endif
+
+                            @if(auth()->user()->hasPermission('delete_categories'))
+
+                            <a href="" id="delete" route="{{route('admin.category.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+
+                                @else
+                                <a href="" id="delete"
+                                   class="disabled btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+
+                            @endif
                   </td>
 
                 </tr>
@@ -97,7 +124,7 @@
                  </div><!-- modal-body -->
 
                  <div class="modal-footer">
-                     <button type="submit" class="btn btn-primary pd-x-20"> Submit</button>
+                     <button type="submit" class="btn btn-primary pd-x-20"> Create</button>
                      <button type="button" class="btn btn-danger pd-x-20" data-dismiss="modal">Close</button>
                  </div>
              </form>

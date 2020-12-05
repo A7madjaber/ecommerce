@@ -57,7 +57,7 @@
 
                                     <li><input type="radio"  name="payment" value="paypal"><img src="{{ asset('front/images/paypal.png') }}" style="width: 100px; height: 60px;"> </li>
 
-                                    <li><input type="radio" name="payment" value="ideal"><img src="{{ asset('front/images/mollie.png') }}" style="width: 100px; height: 60px;"> </li>
+                                    <li><input type="radio" name="payment" value="cash"><img src="{{ asset('front/images/cash.png') }}" style="width: 100px; height: 60px; margin-left: 3px"> </li>
 
                                 </ul>
 

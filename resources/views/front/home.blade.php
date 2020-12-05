@@ -27,24 +27,7 @@
                         <li class="page_menu_item">
                             <a href="{{route('home')}}">Home<i class="fa fa-angle-down"></i></a>
                         </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
+
 
 
                         <li class="page_menu_item has-children">
@@ -59,15 +42,6 @@
                             </ul>
                         </li>
 
-                        <li class="page_menu_item has-children">
-                            <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
                         <li class="page_menu_item"><a href="{{route('blog.posts')}}">blog<i class="fa fa-angle-down"></i></a></li>
                         <li class="page_menu_item"><a href="{{route('contact')}}">contact<i class="fa fa-angle-down"></i></a></li>
                     </ul>
@@ -786,7 +760,7 @@
                 <div class="col">
 
                     <div class="reviews_title_container">
-                        <h3 class="reviews_title">Latest Reviews</h3>
+                        <h3 class="reviews_title">Top Rating</h3>
                         <div class="reviews_all ml-auto"><a href="#">view all <span>reviews</span></a></div>
                     </div>
 
@@ -835,7 +809,9 @@
                                             @endif
 
                                         </div>
-                                        <div class="review_text"><p>{!! str_limit( $pro->details ,80)!!}</p></div>
+                                        <div class="review_text">
+                                            <p>{{$pro->category->category_name }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -858,7 +834,7 @@
             <div class="row">
                 <div class="col">
                     <div class="viewed_title_container">
-                        <h3 class="viewed_title">Recently Viewed</h3>
+                        <h3 class="viewed_title">Recently Added</h3>
                         <div class="viewed_nav_container">
                             <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
                             <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
@@ -869,15 +845,22 @@
 
                         <!-- Recently Viewed Slider -->
                         <div class="owl-carousel owl-theme viewed_slider">
-                        @foreach(RecentlyViewed() as $product)
+                        @foreach(RecentlyAdded() as $product)
                             <!-- Recently Viewed Item -->
                                 <div class="owl-item">
                                     <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                         <div class="viewed_image">
-                                            <img src="{{asset('public/media/product/'.$product->image_one)}}" alt="">
+                                            <img  src="{{asset('public/media/product/'.$product->image_one)}}" alt="">
                                         </div>
                                         <div class="trends_content">
-                                            <div class="trends_category"><a href="#">{{@$product->brand->brand_name}}</a></div>
+
+                                            <div class="trends_category">
+
+                                                <span class="font-weight-light">
+                                                    {{$product->brand !=null?$product->brand->brand_name:'No Brand'}}
+                                                </span>
+                                            </div>
+
                                             <div class="trends_info clearfix">
                                                 <div class="trends_name"><a href="{{route('product',$product->id)}}">{{$product->name}}</a></div>
 

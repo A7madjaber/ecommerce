@@ -34,7 +34,7 @@ class PaymentController extends Controller
 
         $data=$request->all();
 
-        if ($request->payment ='strip'){
+        if ($request->payment == 'strip'){
             return view('front.payment.stripe',compact('data'));
 
 
@@ -42,10 +42,10 @@ class PaymentController extends Controller
         }elseif ($request->payment=='paypal'){
 
 
-        }elseif ($request->payment=='ideal'){
+        }elseif ($request->payment=='cash') {
+            return view('front.payment.cash',compact('data'));
 
-        }else{
-            return 'cash on delivery';
+
         }
     }
 
@@ -85,7 +85,6 @@ class PaymentController extends Controller
             'subtotal'=>$subtotal,
             'shipping'=>$request->shipping,
             'vat'=>$request->vat,
-            'status'=>0,
             'total'=>$total,
             'date'=>date('d-m-y'),
             'month'=>date('F'),
@@ -113,7 +112,7 @@ class PaymentController extends Controller
             $product=Product::where('id',$row->id)->first();
             $qty=$product->buyone_getone== 0 ? $row->qty :$row->qty*2;
 
-            echo  OrderDetials::create([
+              OrderDetials::create([
                 'order_id'=>$order->id,
                 'product_id'=>$row->id,
                 'quantity'=>$qty,
@@ -132,6 +131,71 @@ class PaymentController extends Controller
       Mail::to($user->email)->send(new InvoiceMail($order));
 
       return redirect()->route('home')->with(['message'=>'Order Process Successfully Done','alert-type'=>'success']);
+
+
+    }
+
+
+    public function cash(Request $request){
+
+
+        $total=$request->total;
+        $subtotal=Session::has('coupon') ? Session::get('coupon')['balance'] : Cart::Subtotal();
+
+
+
+        $order= Order::create([
+
+            'user_id'=>Auth::id(),
+            'subtotal'=>$subtotal,
+            'shipping'=>$request->shipping,
+            'vat'=>$request->vat,
+            'payment_type'=>$request->payment_type,
+            'total'=>$total,
+            'date'=>date('d-m-y'),
+            'month'=>date('F'),
+            'year'=>date('Y'),
+            'status_code'=>mt_rand(100000,999999),
+
+
+
+        ]);
+
+
+        Shipping::create([
+            'order_id'=> $order->id,
+            'ship_name'=> $request->ship_name,
+            'ship_phone'=> $request->ship_phone,
+            'ship_email'=> $request->ship_email,
+            'ship_address'=> $request->ship_address,
+            'ship_city'=> $request->ship_city,
+
+        ]);
+
+
+        foreach (Cart::content() as $row){
+
+
+            $product=Product::where('id',$row->id)->first();
+            $qty=$product->buyone_getone== 0 ? $row->qty :$row->qty*2;
+
+            OrderDetials::create([
+                'order_id'=>$order->id,
+                'product_id'=>$row->id,
+                'quantity'=>$qty,
+                'product_name'=>$row->name,
+                'size'=>$row->options->size,
+                'color'=>$row->options->color,
+                'singleprice'=>$row->price,
+                'totalprice'=>$row->price * $row->qty,
+            ]);
+
+        }
+
+        Cart::destroy();
+        Session::has('coupon') ? Session::forget('coupon') : '';
+
+        return redirect()->route('home')->with(['message'=>'Order Process Successfully Done','alert-type'=>'success']);
 
 
     }

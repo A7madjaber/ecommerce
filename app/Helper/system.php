@@ -78,8 +78,8 @@ function Settings(){
 
 
 
-function RecentlyViewed(){
-   return  Product::orderBy('created_at','DESC')->wherestatus(1)->get()->random(12);
+function RecentlyAdded(){
+   return  Product::orderBy('created_at','DESC')->wherestatus(1)->take(12)->get();
 
 }
 
@@ -87,7 +87,7 @@ function RecentlyViewed(){
 function TopRating(){
    return  Product::orderBy('created_at','DESC')->wherestatus(1)->wherehas('ratings')->with(['ratings'], function ($query) {
         return $query->orderBy('rating_count')->get();
-    })->take(5)->get();
+    })->take(6)->get();
 
 }
 

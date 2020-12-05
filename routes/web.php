@@ -64,6 +64,7 @@ Route::get('product/brand/{id}', 'Front\ProductController@brand')->name('product
 Route::get('payment', 'Front\PaymentController@payment')->name('payment.step');
 Route::post('payment/process', 'Front\PaymentController@PaymentProcess')->name('payment.process');
 Route::post('payment/stripe', 'Front\PaymentController@stripe')->name('stripe.charge');
+Route::post('payment/cash', 'Front\PaymentController@cash')->name('cash.charge');
 
 
 

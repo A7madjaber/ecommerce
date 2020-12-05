@@ -17,8 +17,12 @@
 
 
             <h6 class="card-body-title">Deals List
-                <a href="{{route('admin.deal.new')}}" title="New Deal" class="btn btn-sm btn-warning" style="float: right;">
-                    <i class="fa fa-plus"></i></a>
+                @if(auth()->user()->hasPermission('create_deal'))
+                    <a href="{{route('admin.deal.new')}}" title="New Deal" class="btn btn-sm btn-warning" style="float: right;">
+                        <i class="fa fa-plus"></i></a>
+                @else
+                    <a href="#" title="New Deal" class="btn btn-sm btn-warning" style="float: right;"><i class="fa fa-plus"></i></a>
+                @endif
             </h6>
 
 
@@ -50,8 +54,18 @@
                             @endif
 
                             <td>
-                                <a href="{{route('admin.deal.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                <a href="" id="delete" route="{{route('admin.deal.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                @if(auth()->user()->hasPermission('update_deal'))
+                                    <a href="{{route('admin.deal.edit',$row->id) }}"class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                @else
+                                    <a href="#"class="disabled btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                @endif
+
+                                    @if(auth()->user()->hasPermission('delete_deal'))
+                                        <a href="" id="delete" route="{{route('admin.deal.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                    @else
+                                        <a href=""  class="disabled btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                    @endif
+
 
                             </td>
                         </tr>

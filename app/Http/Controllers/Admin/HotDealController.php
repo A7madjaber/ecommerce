@@ -14,12 +14,17 @@ class HotDealController extends Controller
 {
     public function __construct(){
         $this->middleware('auth:admin');
-
+        $this->middleware('permission:create_deal')->only(['index']);
+        $this->middleware('permission:create_deal')->only(['store','create','getproduct']);
+        $this->middleware('permission:update_deal')->only(['edit','update','status']);
+        $this->middleware('permission:delete_deal')->only(['destroy']);
     }
-    public function all(){
+
+    public function index(){
         $deals=HotDeal::all();
         return view('admin.deals.all',compact('deals'));
     }
+
     public function create(){
         $products=Product::wherestatus(1)->get();
         return view('admin.deals.create',compact('products'));
@@ -58,7 +63,7 @@ class HotDealController extends Controller
     }
 
     public function update(Request $request,$id){
-       $deal=HotDeal::findOrFail($id)->update([$request->all()]);
+       $deal=HotDeal::findOrFail($id)->update($request->all());
 
         return Redirect()->route('admin.deal.all')
             ->with(['message' => 'Deal Updated Successfully', 'alert-type' => 'success']);

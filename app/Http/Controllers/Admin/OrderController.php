@@ -11,11 +11,14 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function __construct(){
-    $this->middleware('auth:admin');
-
+        $this->middleware('auth:admin');
+        $this->middleware('permission:read_order')->only(['index','view','return']);
+        $this->middleware('permission:create_order')->only('store');
+        $this->middleware('permission:update_order')->only(['accept','cancel','processDelivery','deliveryDone','returnApprove']);
+        $this->middleware('permission:delete_order')->only(['destroy']);
     }
 
-    public function all(){
+    public function index(){
 
         $order=Order::orderBy('created_at','desc')->get();
         return view('admin.order.all',compact('order'));
@@ -23,9 +26,7 @@ class OrderController extends Controller
 
     public function view($id){
         $order=Order::findOrFail($id);
-
         $products=$order->orderDetails()->with('product')->get();
-
         return view('admin.order.view',compact('order','products'));
     }
 
@@ -52,7 +53,7 @@ class OrderController extends Controller
        $products=OrderDetials::where('order_id',$id)->get();
 
        foreach ($products as $pro){
-          $x= Product::where('id',$pro->product_id)
+           Product::where('id',$pro->product_id)
                ->decrement('quantity', $pro->quantity);
        }
 
@@ -71,8 +72,6 @@ class OrderController extends Controller
 
 
     public function return(){
-
-
         $orders=Order::where('return_order','!=',0)->whereIn('status',[0,1,2,3])->orderBy('created_at','desc')->get();
         return view('admin.order.return',compact('orders'));
     }
@@ -80,16 +79,8 @@ class OrderController extends Controller
     public function returnApprove(Request $request){
 
          $order=Order::findOrFail($request->id);
-
-
-
-
-        $order->update(['return_order'=> 2]);
-
-
-
-
-        return response()->json(['message' => 'Order Return Successfully ','icon'=>'success']);
+         $order->update(['return_order'=> 2]);
+         return response()->json(['message' => 'Order Return Successfully ','icon'=>'success']);
 
 
     }

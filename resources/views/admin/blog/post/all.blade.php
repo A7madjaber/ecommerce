@@ -16,8 +16,14 @@
 
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">Posts List
-                    <a href="{{route('admin.blog.post.create')}}" class="btn btn-sm btn-warning" style="float: right;" >
-                        <i class="fa fa-plus"></i> </a>
+
+                    @if(auth()->user()->hasPermission('create_blogPost'))
+                        <a href="{{route('admin.blog.post.create')}}" class="btn btn-sm btn-warning" style="float: right;" >
+                            <i class="fa fa-plus"></i> </a>
+                        @else
+                        <a href="#" class="disabled btn btn-sm btn-warning" style="float: right;" >
+                            <i class="fa fa-plus"></i> </a>
+                    @endif
                 </h6>
 
 
@@ -41,8 +47,20 @@
 
 
                                 <td>
-                                    <a href="{{route('admin.blog.post.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                    <a href="" id="delete" route="{{route('admin.blog.post.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                    @if(auth()->user()->hasPermission('update_blogPost'))
+                                        <a href="{{route('admin.blog.post.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                    @else
+                                        <a href="#"class="disabled btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                    @endif
+                                        @if(auth()->user()->hasPermission('delete_blogPost'))
+                                            <a href="" id="delete" route="{{route('admin.blog.post.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+
+                                        @else
+                                            <a href="#" class="disabled btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+
+                                        @endif
+
+
                                 </td>
 
                             </tr>

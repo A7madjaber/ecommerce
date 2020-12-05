@@ -12,9 +12,13 @@ class SubCategoryController extends Controller
      public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_subcategory')->only(['index']);
+        $this->middleware('permission:create_subcategory')->only('store');
+        $this->middleware('permission:update_subcategory')->only(['edit','update']);
+        $this->middleware('permission:delete_subcategory')->only(['destroy']);
     }
 
-    public function subCategory(){
+    public function index(){
 
          $subCategory=Subcategory::all();
          $categories=Category::all();

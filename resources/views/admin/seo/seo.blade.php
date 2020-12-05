@@ -66,8 +66,14 @@
                     </div><!-- end row -->
 
 
+
                     <div class="form-layout-footer">
-                        <button class="btn btn-primary mg-r-5 pull-right">Update</button>
+                        @if(auth()->user()->hasPermission('update_seo'))
+                            <button  class="btn btn-primary mg-r-5 pull-right">Update</button>
+                        @else
+                            <button disabled class="btn btn-primary mg-r-5 pull-right">Update</button>
+                        @endif
+
                     </div><!-- form-layout-footer -->
                 </form>
 

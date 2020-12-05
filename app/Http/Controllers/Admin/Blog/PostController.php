@@ -12,10 +12,14 @@ class PostController extends Controller
 {
     public function __construct(){
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_blogPost')->only(['index']);
+        $this->middleware('permission:create_blogPost')->only('store','create');
+        $this->middleware('permission:update_blogPost')->only(['edit','update']);
+        $this->middleware('permission:delete_blogPost')->only(['destroy']);
     }
 
 
-    public function post(){
+    public function index(){
         $posts=BlogPost::all();
         return view('admin.blog.post.all',compact('posts'));
     }
@@ -38,13 +42,9 @@ class PostController extends Controller
             BlogPost::create($request->all());
         }
 
-
         return redirect()->route('admin.blog.post.all')->with(['message'=>'Post Inserted Successfully','alert-type'=>'success']);
 
-
     }
-
-
 
     public function edit($id)
     {
@@ -52,8 +52,6 @@ class PostController extends Controller
         $post=BlogPost::findOrFail($id);
         return view('admin.blog.post.edit',compact('post','categories'));
     }
-
-
 
 
     public function update(Request $request, $id)
@@ -73,7 +71,6 @@ class PostController extends Controller
             $image_database=$request->old_image;
 
         }
-
 
 
         $post->update([

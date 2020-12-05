@@ -17,8 +17,15 @@
 
             <div class="card pd-20 pd-sm-40">
                 <h6 class="card-body-title">Coupon List
-                    <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
-                        <i class="fa fa-plus"></i></a>
+
+                    @if(auth()->user()->hasPermission('create_coupon'))
+                        <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+                            <i class="fa fa-plus"></i></a>
+                        @else
+                        <a href="#" class="disabled btn btn-sm btn-warning" style="float: right;" >
+                            <i class="fa fa-plus"></i></a>
+                        @endif
+
                 </h6>
 
 
@@ -41,9 +48,27 @@
                                 <td>{{ $row->discount}}%</td>
 
                                 <td>
+                                    @if(auth()->user()->hasPermission('update_coupon'))
+
                                     <a href="{{route('admin.coupon.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                    <a href="" id="delete" route="{{route('admin.coupon.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
-                                    <a href="{{route('admin.coupon.sendCoupon',$row->id)}}" title="Send message to Subscribers" class="btn btn-sm btn-success"><i class="fa fa-send"></i> </a>
+                                    @else
+                                        <a href="#"class="disabled btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+
+                                    @endif
+                                        @if(auth()->user()->hasPermission('delete_coupon'))
+
+                                        <a href="" id="delete" route="{{route('admin.coupon.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                        @else
+                                            <a href="#" class="disabled btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                                        @endif
+
+                                        @if(auth()->user()->hasPermission('update_coupon'))
+
+                                            <a href="{{route('admin.coupon.sendCoupon',$row->id)}}" title="Send message to Subscribers" class="btn btn-sm btn-success"><i class="fa fa-send"></i> </a>
+                                        @else
+                                            <a href="#" title="Send message to Subscribers" class="disabled btn btn-sm btn-success"><i class="fa fa-send"></i> </a>
+
+                                        @endif
                                 </td>
 
                             </tr>

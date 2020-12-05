@@ -5,7 +5,7 @@
     $today=\App\Order::where('date',date('d-m-y'))->get();
     $month=\App\Order::where('month',date('F'))->sum('total');
     $year=\App\Order::where('year',date('Y'))->sum('total');
-    $orderDelivery=\App\Order::where('status',3)->get();
+    $orderDelivery=\App\Order::where('status',3)->where('date',date('d-m-y'))->get();
     $orderReturn=\App\Order::where('return_order',2)->get();
     $orderReturn=\App\Order::where('return_order',2)->get();
     $products=\App\Model\Admin\Product::all()->count();

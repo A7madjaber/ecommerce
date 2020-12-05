@@ -10,18 +10,20 @@ class CategoryController extends Controller
 {
     public function __construct(){
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_blogCategory')->only(['index']);
+        $this->middleware('permission:create_blogCategory')->only('store');
+        $this->middleware('permission:update_blogCategory')->only(['edit','update']);
+        $this->middleware('permission:delete_blogCategory')->only(['destroy']);
     }
 
-public function category(){
+    public function index(){
         $categories=BlogCategory::all();
-
         return view('admin.blog.category.all',compact('categories'));
-}
+    }
 
 
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required|unique:blog_categories,name|max:255',
         ]);
@@ -40,20 +42,13 @@ public function category(){
     public function update(Request $request, $id)
     {
         $request->validate([
-
             'name' => 'required|max:255|unique:blog_categories,name,'.$id,
-
         ]);
-
-       
 
         BlogCategory::findOrFail($id)->update($request->all());
         return Redirect()->route('admin.blog.category.all')
             ->with(['message' => 'Category Updated Successfully', 'alert-type' => 'success']);
     }
-
-
-
 
 
 

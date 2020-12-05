@@ -13,9 +13,12 @@ class MessageController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_contact')->only(['index','show']);
+        $this->middleware('permission:update_contact')->only(['replay']);
+        $this->middleware('permission:delete_contact')->only(['destroy']);
     }
 
-    public function all(){
+    public function index(){
         $messages=Contact::orderBy('created_at','desc')->get();
         return view('admin.message.all',compact('messages'));
 
@@ -31,4 +34,6 @@ class MessageController extends Controller
         Mail::to($request->email)->send(new MessageMail($request->replay,'Thank To send us'));
         return redirect()->route('admin.message.all')->with(['message'=>'Replay Send Successfully','alert-type'=>'success']);
     }
+
 }
+

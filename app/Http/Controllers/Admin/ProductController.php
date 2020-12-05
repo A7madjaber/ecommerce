@@ -14,12 +14,17 @@ class ProductController extends Controller
 {
 
     public function __construct(){
-    $this->middleware('auth:admin');
+
+        $this->middleware('auth:admin');
+        $this->middleware('permission:read_product')->only(['index','show']);
+        $this->middleware('permission:create_product')->only(['store','create','getsubcategories']);
+        $this->middleware('permission:update_product')->only(['edit','update','status']);
+        $this->middleware('permission:delete_product')->only(['destroy']);
     }
-    public function product()
+
+    public function index()
     {
         $product=Product::all();
-
 
         return view('admin.product.product',compact('product'));
     }

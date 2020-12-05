@@ -11,10 +11,12 @@ class SeoController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_seo')->only(['index']);
+        $this->middleware('permission:update_seo')->only(['update']);
     }
 
 
-    public function seo(){
+    public function index(){
         $seo= Seo::all()->first();
         return view('admin.seo.seo',compact('seo'));
     }

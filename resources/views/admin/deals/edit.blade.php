@@ -22,7 +22,7 @@
 
 
 
-                <form method="post" action="{{route('admin.deal.update',$deal->id)}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('admin.deal.update',$deal->id)}}">
                     @csrf
 
                     <div class="form-layout">
@@ -31,7 +31,7 @@
                             <div class="col-lg-3">
                                 <div class="form-group mg-b-10-force">
                                     <label for="exampleInputEmail1">Expired Date</label>
-                                    <input type="datetime-local" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$deal->date}}" name="date">
+                                    <input type="datetime-local"  class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$deal->date}}" name="date">
 
                                 </div>
                             </div><!-- modal-body -->

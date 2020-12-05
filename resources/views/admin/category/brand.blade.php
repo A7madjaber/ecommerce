@@ -17,8 +17,18 @@
 
         <div class="card pd-20 pd-sm-40">
             <h6 class="card-body-title">Brand List
-              <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+
+                @if(auth()->user()->hasPermission('create_subcategory'))
+
+                    <a href="#" class="btn btn-sm btn-warning" style="float: right;" data-toggle="modal" data-target="#modaldemo3">
+                        <i class="fa fa-plus"></i></a>
+
+                @else
+                <a href="#" class="disabled btn btn-sm btn-warning" style="float: right;">
                   <i class="fa fa-plus"></i></a>
+
+                    @endif
+
             </h6>
 
 
@@ -40,10 +50,22 @@
                   <td>{{ $row->brand_name }}</td>
                   <td> <img  class="img-fluid img-thumbnail" src="{{asset($row->brand_logo) }}" height="60px;" width="70px;"> </td>
                   <td>
-
+                      @if(auth()->user()->hasPermission('update_subcategory'))
 
                       <a href="{{route('admin.brand.edit',$row->id) }} "class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                      <a href="" id="delete" route="{{route('admin.brand.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+                      @else
+                          <a href="#"class="disabled btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+
+                      @endif
+
+                          @if(auth()->user()->hasPermission('delete_subcategory'))
+                              <a href="" id="delete" route="{{route('admin.brand.delete')}}" model_id="{{$row->id}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+
+                          @else
+                              <a href="#" class="disabled btn btn-sm btn-danger"><i class="fa fa-trash"></i> </a>
+
+                          @endif
+
 
                   </td>
 
@@ -100,7 +122,7 @@
 
               </div><!-- modal-body -->
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary pd-x-20">Sumbit</button>
+                <button type="submit" class="btn btn-primary pd-x-20">Create</button>
                 <button type="button" class="btn btn-danger pd-x-20" data-dismiss="modal">Close</button>
               </div>
                 </form>

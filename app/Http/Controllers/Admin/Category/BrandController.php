@@ -11,16 +11,23 @@ class BrandController extends Controller
      public function __construct()
     {
         $this->middleware('auth:admin');
+
+        $this->middleware('permission:read_brands')->only(['index']);
+        $this->middleware('permission:create_brands')->only('store');
+        $this->middleware('permission:update_brands')->only(['edit','update']);
+        $this->middleware('permission:delete_brands')->only(['destroy']);
+
     }
 
 
- public function brand(){
- 	$brand = Brand::all();
-  	return view('admin.category.brand',compact('brand'));
- }
+    public function index(){
+        $brand = Brand::all();
+        return view('admin.category.brand',compact('brand'));
+    }
 
 
- public function store(Request $request){
+
+    public function store(Request $request){
          $request->validate([
              'brand_name' => 'required|unique:brands|max:55',
          ]);

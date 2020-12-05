@@ -14,14 +14,15 @@ class SettingController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_settings')->only(['index']);
+        $this->middleware('permission:update_settings')->only(['update']);
     }
 
-    public function settings()
+    public function index()
     {
         $settings = Settings::all()->first();
         return view('admin.settings.settings', compact('settings'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -40,9 +41,6 @@ class SettingController extends Controller
             $image_database=$request->old_image;
 
         }
-
-
-
 
         $setting->update([
                 'logo' =>  $image_database,

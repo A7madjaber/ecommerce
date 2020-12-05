@@ -22,7 +22,7 @@
 
 
 
-                <form method="post" action="{{route('admin.deal.store')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('admin.deal.store')}}">
                     @csrf
 
                     <div class="form-layout">

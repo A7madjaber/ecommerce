@@ -13,10 +13,18 @@ class CouponController extends Controller
      public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('permission:read_coupon')->only(['index']);
+        $this->middleware('permission:create_coupon')->only(['store']);
+        $this->middleware('permission:update_coupon')->only(['edit','update','sendCoupon']);
+        $this->middleware('permission:delete_coupon')->only(['destroy']);
+
+        $this->middleware('permission:read_newsLetter')->only(['newsletters']);
+        $this->middleware('permission:update_newsLetter')->only(['destroy']);
+        $this->middleware('permission:delete_newsLetter')->only(['deleteNewslettersAll','deleteNewsletters']);
     }
 
 
-    public function coupon(){
+    public function index(){
 
   	$coupon = Coupon::all();
   	return view('admin.Coupon.coupon',compact('coupon'));
@@ -74,6 +82,18 @@ class CouponController extends Controller
         NewsLetter::findOrFail($request->id)->delete();
         return response()->json(['message'=>'Subscriber Deleted Successfully','status'=>true],200);
     }
+
+
+    public function deleteNewslettersAll(Request $request)
+    {
+
+            NewsLetter::whereIn('id',$request->ids)->delete();
+
+        return Redirect()->back()
+            ->with(['message' => 'Subscribers Deleted Successfully ', 'alert-type' => 'success']);
+    }
+
+
 
     public function sendCoupon($id){
          $coupon=Coupon::findOrFail($id);

@@ -27,6 +27,9 @@
 
 
 <hr>
+
+              @if(auth()->user()->hasPermission('update_contact'))
+
               <div class="col-lg-12">
                   <div class="form-group">
                       <label class="form-control-label">Message Replay: <span class="tx-danger">*</span></label>
@@ -48,7 +51,7 @@
               </div><!-- form-layout-footer -->
 
 
-
+@endif
           </div><!-- sl-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 

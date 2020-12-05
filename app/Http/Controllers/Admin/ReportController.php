@@ -12,7 +12,7 @@ class ReportController extends Controller
 
     public function __construct(){
         $this->middleware('auth:admin');
-
+        $this->middleware('permission:read_order')->only(['search','report','searchResult']);
     }
 
     public function report($date,$status){
