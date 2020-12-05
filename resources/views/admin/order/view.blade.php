@@ -1,13 +1,6 @@
 @extends('admin.layouts.app',['title'=>'Orders'])
 @section('content')
 
-    <style>
-        .box-shadow {
-            -webkit-box-shadow: 0px 10px 20px 0px rgba(50, 50, 50, 0.52);
-            -moz-box-shadow:    0px 10px 20px 0px rgba(50, 50, 50, 0.52);
-            box-shadow:         0px 10px 20px 0px rgba(50, 50, 50, 0.52)
-        }    </style>
-
 
 
 

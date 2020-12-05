@@ -140,7 +140,8 @@
                             </div><!-- col-4 -->
 
 
-                            <img src="{{asset('admin/img/placeholder.png')}}"
+                            <img src="{{asset('admin/img/img11.jpg')}}"
+
                                  style="width:60px;height: 60px" id="one" class="img-fluid img-thumbnail">
                             <div class="col-lg-3">
                                 <div class="form-group">
@@ -153,7 +154,7 @@
                                 </div>
                             </div><!-- col-4 -->
 
-                            <img src="{{asset('admin/img/placeholder.png')}}"
+                            <img src="{{asset('admin/img/img11.jpg')}}"
                                  style="width:60px;height: 60px" id="two" class="img-fluid img-thumbnail">
                             <div class="col-lg-3">
                                 <div class="form-group">
@@ -169,7 +170,7 @@
 
 
 
-                            <img src="{{asset('admin/img/placeholder.png')}}"
+                            <img src="{{asset('admin/img/img11.jpg')}}"
                                  style="width:60px;height: 60px" id="three" class="img-fluid img-thumbnail">
                             <div class="col-lg-3">
                                 <div class="form-group">

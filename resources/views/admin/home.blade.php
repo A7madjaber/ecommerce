@@ -16,6 +16,7 @@
 
 
 
+
     <div class="sl-mainpanel ">
         <nav class="breadcrumb sl-breadcrumb">
             <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>

@@ -10,6 +10,7 @@
 
 </head>
 
+
 <body>
 
 
@@ -30,16 +31,15 @@
 
 <!-- ########## START: MAIN PANEL ########## -->
 
-
 @yield('content')
-
-
 
 
 <!-- ########## END: MAIN PANEL ########## -->
 @endguest
 
 @include('admin.layouts._js')
+
+
 
 
 </body>

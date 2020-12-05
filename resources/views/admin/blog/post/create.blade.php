@@ -57,7 +57,7 @@
                         </div><!-- col-4 -->
 
                         <div class="d-flex justify-content-center">
-                            <img src="{{asset('admin/img/placeholder.png')}}"
+                            <img src="{{asset('admin/img/img12.jpg')}}"
                                  style="width:880px;height:380px" id="one" class="img-fluid img-thumbnail ml-3">
                         </div>
                         <hr>

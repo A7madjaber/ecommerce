@@ -16,11 +16,20 @@
 <link rel="stylesheet" href="{{asset('admin/css/starlight.css')}}">
 <link href="{{asset('admin/lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
 
+
 <style>
 
     a.disabled {
         pointer-events: none;
         cursor: default;
     }
+
+    .box-shadow {
+        -webkit-box-shadow: 0px 10px 20px 0px rgba(50, 50, 50, 0.52);
+        -moz-box-shadow:    0px 10px 20px 0px rgba(50, 50, 50, 0.52);
+        box-shadow:         0px 10px 20px 0px rgba(50, 50, 50, 0.52)
+    }
+
+
 
 </style>

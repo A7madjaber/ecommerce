@@ -81,7 +81,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Tntagram: <span class="tx-danger">*</span></label>
-                                    <input class="form-control" type="text" name="intagram" value="{{$settings->facebook }}"  >
+                                    <input class="form-control" type="text" name="intagram" value="{{$settings->instagram }}"  >
 
 
                                 </div>

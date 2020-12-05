@@ -1,12 +1,19 @@
-@extends('admin.layouts.app')
+@extends('admin.layouts.app',['title'=>'change password'])
 
 @section('content')
-<div class="container"><br><br><br><br>
+
+    <div class="sl-mainpanel">
+        <nav class="breadcrumb sl-breadcrumb">
+            <a class="breadcrumb-item" href="{{route('admin.home')}}">Dashboard</a>
+            <span class="breadcrumb-item active">Change password</span>
+        </nav>
+        <div class="sl-pagebody">
+            <div class="card pd-20 pd-sm-40">
+                <h6 class="card-body-title">Change password</h6><br>
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 ">
-            <div class="shadow card">
-                <div class="card-header">{{ __('Change Password') }}</div>
-
+            <div class="card box-shadow">
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.password.update') }}" aria-label="{{ __('Reset Password') }}">
                         @csrf
@@ -48,7 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 ">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Reset Password') }}
@@ -60,5 +67,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 @endsection

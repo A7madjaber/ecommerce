@@ -204,5 +204,11 @@ Route::group(['as'=>'admin.','prefix'=>'admin'],function (){
         Route::post('delete/id', 'AdminController@destroy')->name('delete');
 
     });
+
+    Route::group(['as'=>'profile.','prefix'=>'profile'],function (){
+        Route::get('', 'ProfileController@index')->name('index');
+        Route::post('', 'ProfileController@update')->name('update');
+
+    });
 });
 

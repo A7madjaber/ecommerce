@@ -41,8 +41,6 @@ class HomeController extends Controller
     {
 
          $user=auth()->user();
-
-
         if($request->avatar) {
             if ($user->avatar){
                 if (file_exists('public/media/user/' . $user->avatar)) {
